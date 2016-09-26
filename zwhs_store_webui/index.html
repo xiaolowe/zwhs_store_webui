@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- Application Name - app.js and Main controller - controller.js-->
+<html ng-app="neuboard" ng-controller="MainCtrl as main">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Page title - directive.js -->
+    <title page-title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Icons -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/simple-line-icons.css" rel="stylesheet">
+    <!--  CSS Animations -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!--  CSS Main -->
+    <link href="css/main.css" rel="stylesheet">
+    <!-- date picker -->
+    <link rel="stylesheet" href="js/plugins/datepicker/bootstrap-datetimepicker.min.css">
+    <!-- toast -->
+    <link rel="stylesheet" href="js/plugins/toaster/toaster.css">
+    <!-- select2 -->
+    <link rel="stylesheet" href="js/plugins/select2/select2.css">
+    <link rel="stylesheet" href="js/plugins/select2/select2-bootstrap.css">
+
+    <link rel="stylesheet" href="js/plugins/cropper/cropper.min.css">
+    
+    <!-- Feature detection -->
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+<!-- Current state name -->
+<body style="overflow-x:hidden">
+    <toaster-container toaster-options="{'position-class': 'toast-top-center'}"></toaster-container>
+    <div ng-if="islogin" class="navbar navbar-default" id="header" ng-include="'views/layout/header.html'"></div>
+    <!-- Page Wrapper-->
+    <div class="container">
+    <!-- Right Sidebar Navigation -->
+    <section id="main-wrapper" class="theme-default">
+        <div ui-view></div>
+    </section>
+    <!-- /Page wrapper-->
+    </div>
+    <!-- /Left Sidebar Navigation -->
+    <!-- jQuery-->
+    <script src="js/vendor/jquery-2.1.1.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/plugins/navgoco/jquery.navgoco.min.js"></script>
+    <!-- Pace JS -->
+    <script src="js/plugins/pace/pace.min.js"></script>
+    <!-- Custom  -->
+    <script src="js/custom.js"></script>
+    <!-- Angular -->
+    <script src="js/angular/angular.min.js"></script>
+    <script src="js/angular/angular-cookies.min.js"></script>
+    <script src="js/ui-router/angular-ui-router.min.js"></script>
+    <script src="js/bootstrap/ui-bootstrap-tpls-0.12.0.min.js"></script>
+    <!-- i18n -->
+    <script src="js/angular/i18n/angular-locale_zh-cn.js"></script>
+    <!-- DateTimePicker -->
+    <script src="js/plugins/datepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/plugins/datepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+    <!-- datatables -->
+    <script src="js/plugins/dataTables/js/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/js/dataTables.bootstrap.js"></script>
+    <script src="js/plugins/dataTables/js/angular-datatables.min.js"></script>
+
+    <script src="js/plugins/cropper/cropper.min.js"></script>
+    <!-- jQuery uploader -->
+    <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+    <script src="js/plugins/fileupload/load-image.all.min.js"></script>
+    <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+    <script src="js/plugins/fileupload/canvas-to-blob.min.js"></script>
+    <script src="js/plugins/fileupload/jquery.fileupload.js"></script>
+    <script src="js/plugins/fileupload/jquery.fileupload-process.js"></script>
+    <script src="js/plugins/fileupload/jquery.fileupload-image.js"></script>
+    <script src="js/plugins/fileupload/jquery.iframe-transport.js"></script>
+    <script src="js/plugins/fileupload/jquery.fileupload-angular.js"></script>
+    <!-- Ueditor-->
+    <script src="js/plugins/ueditor/ueditor.config.js"></script>
+    <script src="js/plugins/ueditor/ueditor.all.js"></script>
+    <script src="js/plugins/ueditor/angular-ueditor.js"></script>
+    <!-- Ueditor-->
+    <script src="js/plugins/echarts/echarts-all.js"></script>
+    <!-- Angular Script -->
+    <script src="js/app.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/controllerByAlex.js"></script>
+    <script src="js/controllerByLance.js"></script>
+    <!-- ngResource -->
+    <script src="js/angular/angular-resource.js"></script>
+    <!-- ngSanitize -->
+    <script src="js/angular/angular-sanitize.js"></script>
+    <script src="js/plugins/jquery-ui/sortable.js"></script>
+    <!-- ui.bootstrap.pagination && ui.bootstrap.pager -->
+    <script src="js/plugins/pagination/pagination.js"></script>
+    <script src="js/plugins/pager/pager.js"></script>
+    <!-- toast -->
+    <script src="js/plugins/toaster/toaster.min.js"></script>
+    <!-- select2 -->
+    <script src="js/plugins/select2/select2.js"></script>
+    <script src="js/plugins/select2/select2_locale_zh-CN.js"></script>
+    <!-- ngMessages -->
+    <script src="js/angular/angular-messages.min.js"></script>
+</body>
+</html>

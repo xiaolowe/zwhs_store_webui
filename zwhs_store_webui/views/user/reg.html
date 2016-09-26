@@ -1,0 +1,70 @@
+<div class="reg animated fadeInUp" data-ng-controller="userReg">
+    <div class="title"> 
+      <p><img src="img/logo.png" />
+        母婴店后台注册</p> 
+    </div>
+    <div class="body">
+        <div class="row">
+        <form class="form" name="ngform" novalidate>
+            <div class="form-group col-sm-12">
+                <label>联系人</label>
+                <input type="text" class="form-control" placeholder="联系人" data-ng-model="usertruename" name="usertruename" required maxlength="20">
+                  <div ng-messages="!ngform.usertruename.$pristine && ngform.usertruename.$error">
+                    <div ng-message="required">联系人姓名必填</div>
+                  </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label>手机号</label>
+                <input type="number" class="form-control" placeholder="手机号" data-ng-model="userphone" name="userphone" required minlength="11" maxlength="11" min="1">
+                <div ng-messages="!ngform.userphone.$pristine && ngform.userphone.$error">
+                    <div ng-message="required">手机号必填</div>
+                    <div ng-message="number">手机号只能是数字</div>
+                    <div ng-message="minlength">手机号必须是11位</div>
+                    <div ng-message="maxlength">手机号必须是11位</div>
+                    <div ng-message="min">输入的手机号不合法</div>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label>&nbsp;</label>
+                <button type="button" class="btn btn-primary btn-block" data-ng-disabled="msg==1" data-ng-click="getMessage()" >{{getcodebtn}}</button>
+            </div>
+            <div class="form-group col-sm-12">
+                <label>短信验证码</label>
+                <input type="text" class="form-control" placeholder="短信验证码" data-ng-model="messagecode" name="messagecode" required maxlength="10">
+                  <div ng-messages="!ngform.messagecode.$pristine && ngform.messagecode.$error">
+                    <div ng-message="required">短信验证码必填</div>
+                  </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <label>登录密码</label>
+                <input type="password" class="form-control" placeholder="登录密码" data-ng-model="userpwd" name="userpwd" required maxlength="15">
+                  <div ng-messages="!ngform.userpwd.$pristine && ngform.userpwd.$error">
+                    <div ng-message="required">登录密码必填</div>
+                  </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <label>再次输入密码</label>
+                <input type="password" class="form-control" placeholder="再次输入密码" data-ng-model="userpwd2" name="userpwd2" required maxlength="15">
+                  <div ng-messages="!ngform.userpwd2.$pristine && ngform.userpwd2.$error">
+                    <div ng-message="required">请再次输入密码</div>
+                  </div>
+            </div>
+            <div class="form-group col-sm-12">
+                <label>电子邮箱</label>
+                <input type="email" class="form-control" placeholder="电子邮箱" data-ng-model="useremail" name="useremail" required maxlength="50" ng-pattern="/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{1,10})+$/">
+                  <div ng-messages="!ngform.useremail.$pristine && ngform.useremail.$error">
+                    <div ng-message="required">电子邮箱必填</div>
+                    <div ng-message="email">电子邮箱格式错误</div>
+                    <div ng-message="pattern">电子邮箱格式错误</div>
+                  </div>
+            </div>
+            <div class="col-sm-6">
+                <a href="" ui-sref="login" class="btn btn-default btn-block"><i class="fa fa-reply"></i>已有帐号，登录</a>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-primary btn-block" data-ng-click="regsubmit()" ng-disabled="ngform.$invalid" data-ng-if="successbutton==1">提交</button>
+                <button class="btn btn-primary btn-block" data-ng-if="successbutton==0" disabled="disabled">提交</button>
+            </div>
+        </form>
+    </div>
+</div>

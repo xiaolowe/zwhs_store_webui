@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h3 class="modal-title">会员详情</h3>
+</div>
+<div class="modal-body">
+	<div data-ng-controller="userDetailsController">
+		<table class="table table-bordered">
+			<tr>
+				<td rowspan="3" style="width:25%"><img src="{{data.memberAvatar}}" width="132" height="132" alt=""></td>
+				<th>微信昵称:</th>
+				<td colspan="3">{{data.wechatAliasname}}</td>
+			</tr>
+			<tr>
+				<th style="width:15%">用户ID:</th>
+				<td style="width:15%">{{data.memberId}}</td>
+				<th style="width:15%">用户所在地:</th>
+				<td style="width:15%">{{data.regionProvName}}{{data.regionCityName}}</td>
+			</tr>
+			<tr>
+				<th>状态:</th>
+				<td>
+					<span data-ng-if="data.memberState==1">正常</span>
+					<span data-ng-if="data.memberState==0">禁用</span>
+				</td>
+				<th>创建时间:</th>
+				<td>{{data.memberTime | date:"yyyy-MM-dd"}}</td>
+			</tr>
+<!-- 			<tr>
+				<th>用户所在地:</th>
+				<td colspan="3">安徽省合肥市</td>
+			</tr> -->
+		</table>
+		<table class="table table-bordered">
+			<tr>
+				<th>联系人</th>
+				<th>联系电话</th>
+				<th>地址</th>
+			</tr>
+			<tr data-ng-repeat="item in data.wechatMemberAddrs">
+				<td>{{item.contactsName}}</td>
+				<td>{{item.contactsPhone}}</td>
+				<td>{{item.contactsAddress}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

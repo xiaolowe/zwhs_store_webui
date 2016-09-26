@@ -1,0 +1,123 @@
+<div class="pageheader">
+    <h4>添加商品</h4>
+</div>
+
+<section id="main-content">
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body" ng-controller="submitGoods">
+					<div class="table-responsive">
+						<form novalidate class="form-group" name="ngform">
+						  <table class="table table-bordered">
+							<tbody>
+							  <tr>
+							  	<th>商品名称：</th>
+							  	<td colspan="3">
+							  		<input type="text" class="form-control" data-ng-model="goodsname" name="goodsname" required maxlength="20" />
+	                                  <div ng-messages="!ngform.goodsname.$pristine && ngform.goodsname.$error">
+	                                    <div ng-message="required">商品名称必填</div>
+	                                  </div>
+							  	</td>
+							  </tr>
+							  <tr>
+								<th>品牌名称：</b></th>
+								<td>
+              					  <!--<input select2 config="default" query="brandAJAX" placeholder="请输入品牌名称" class="form-control" data-ng-model="brandno" />-->
+									<select class="form-control" data-ng-model="brand" name="brand" required>
+										<option value="">请选择品牌名称</option>
+										<option value="{{item.brandNo}}" data-ng-repeat="item in brandname">
+											{{item.brandName}}
+										</option>
+									</select>
+									<div ng-messages="!ngform.brand.$pristine && ngform.brand.$error">
+										<div ng-message="required">请选择品牌名称</div>
+									</div>
+								</td>
+								<th>商品编码：</b></th>
+								<td>
+									<input type="text" class="form-control" data-ng-model="goodssn" name="goodssn" required maxlength="20" />
+	                                  <div ng-messages="!ngform.goodssn.$pristine && ngform.goodssn.$error">
+	                                    <div ng-message="required">商品编码必填</div>
+	                                  </div>
+								</td>
+							  </tr>
+							  <tr>
+								<th>品牌分类：</b></th>
+								<td>
+									<select class="form-control" data-ng-model="pclass" data-ng-change="changeClassify()" name="pclass" required>
+										<option value="">请选择品牌分类</option>
+										<option value="{{item.gcNo}}" data-ng-repeat="item in classify">{{item.gcName}}</option>
+									</select>
+									<div ng-messages="!ngform.pclass.$pristine && ngform.pclass.$error">
+										<div ng-message="required">请选择品牌分类</div>
+									</div>
+								</td>
+								<th>子分类：</b></th>
+								<td>
+									<select class="form-control" data-ng-model="cclass" name="cclass" required>
+										<option value="">请选择子分类</option>
+										<option value="{{item.gcNo}}" data-ng-repeat="item in childclassify">{{item.gcName}}</option>
+									</select>
+									<div ng-messages="!ngform.cclass.$pristine && ngform.cclass.$error">
+										<div ng-message="required">请选择品牌子分类</div>
+									</div>
+								</td>
+							  </tr>
+							  <tr>
+								<th>规格：</b></th>
+								<td colspan="3">
+									<input type="text" class="form-control" data-ng-model="goodsspec" name="goodsspec" required maxlength="40"/>
+									<div ng-messages="!ngform.goodsspec.$pristine && ngform.goodsspec.$error">
+										<div ng-message="required">商品规格必填</div>
+									</div>
+								</td>
+							  </tr>
+							  <tr>
+								<th>商品图片：</b></th>
+								<td colspan="3">
+									<button link="goodsbigimage" upload-file ratio="'640_640'" class="btn btn-sm btn-info">点击上传</button>
+									&nbsp;
+									<span data-ng-if="goodsbigimage">
+										<a href="" data-ng-click="openBigImage('sm')">点击查看已上传图片</a>
+									</span>
+								</td>
+							  </tr>
+							  <tr>
+								<th colspan="4">
+									商品介绍：
+								</th>
+							  </tr>
+							  <tr>
+								<td colspan="4">
+									<div class="ueditor" config=" {toolbars:[
+											['bold', 'italic', 'underline', 'strikethrough', 'forecolor', 'backcolor', 'justifyleft', 'justifycenter', 'justifyright', '|', 'insertunorderedlist', 'insertorderedlist', 'blockquote', 'emotion', 'uploadimage', 'link', 'removeformat', '|', 'rowspacingtop', 'rowspacingbottom', 'lineheight', 'paragraph', 'fontsize', 'source', 'fullscreen'],
+											['inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols']
+										],
+						            autoClearinitialContent:true,
+						            wordCount:false,
+						            elementPathEnabled:false,
+						            initialFrameWidth:null,
+						            initialFrameHeight:300,
+						      }" ng-model="goodsbody" link="goodsdescription" name="goodsbody" required></div>
+									<div ng-messages="!ngform.goodsbody.$pristine && ngform.goodsbody.$error">
+										<div ng-message="required">商品介绍必填</div>
+									</div>
+								</td>
+							  </tr>
+							  <tr>
+								<td colspan="4" style="text-align:right">
+									<button class="btn btn-danger" type="reset" data-ng-click="reset()">重填</button>&nbsp;&nbsp;
+									<button class="btn btn-success" data-ng-click="submit()" ng-disabled="ngform.$invalid">提交审核</button>
+
+								</td>
+							  </tr>
+							</tbody>
+						  </table>
+					  </form>
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

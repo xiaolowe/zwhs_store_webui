@@ -1,0 +1,20 @@
+<aside class="sidebar sidebar-left">
+	<nav>	    
+	    <h5 class="sidebar-header">优惠券</h5>
+	    <ul class="nav nav-stacked">
+	        <li ng-class="{active: $state.includes('marketing.tradeincard')}">
+	            <a href="" ui-sref="marketing.tradeincard" data-ng-if="authorize==0">
+	                优惠券
+	            </a>
+	            <a href="" data-ng-if="authorize!=0">
+	                优惠券
+	            </a>
+	        </li>
+	    </ul>
+	</nav>
+</aside>
+<section class="main-content-wrapper">
+	<div ui-view></div>
+</section>
+<!-- Footer -->
+<div ng-include="'views/layout/footer.html'"></div>

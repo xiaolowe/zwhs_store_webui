@@ -1,0 +1,74 @@
+<div id="page_index">
+    <div class="shop_title clearfix">
+        <div>
+            <h3>{{companyname}}<span class="badge badge-success">{{indexdata.sgName}}</span><a href="" ui-sref="level">查看全部等级</a></h3>
+            <p class="desc">{{indexdata.companyAddress}}</p>
+        </div>
+        <div class="btn-group">
+            <a href="" class="btn btn-primary" data-ng-click="decoratebtn()">店铺装修</a>
+
+        </div>
+    </div>
+    <section id="main-content">
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="panel widget-mini">
+                    <div class="panel-body">
+                        <i class="icon-bar-chart"></i>
+                        <span class="total text-center">￥{{indexdata.totalAmount}}</span>
+                        <span class="title text-center">总交易额</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="panel widget-mini">
+                    <div class="panel-body">
+                        <i class="icon-graph"></i>
+                        <span class="total text-center">￥{{indexdata.accBal}}</span>
+                        <span class="title text-center">可提现</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="panel  panel-solid-success widget-mini">
+                    <div class="panel-body">
+                        <i class="icon-user"></i>
+                        <span class="total text-center">{{indexdata.totalOrder}}</span>
+                        <span class="title text-center">总订单数</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="panel panel-solid-primary widget-mini">
+                    <div class="panel-body">
+                        <i class="icon-users"></i>
+                        <span class="total text-center">{{indexdata.totaMember}}</span>
+                        <span class="title text-center">我的用户</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row charts">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">七日订单数</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <div style="height:300px;" id="pv"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">七日交易额</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <div style="height:300px;" id="trade"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

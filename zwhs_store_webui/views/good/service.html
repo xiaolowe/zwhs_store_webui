@@ -1,0 +1,59 @@
+<div class="pageheader">
+    <h3>我的服务</h3>
+</div>
+<section id="main-content">
+    <div class="row" data-ng-controller="myServices">
+        <div class="col-sm-12">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <td><b>服务编号：</b></td>
+                        <td>{{data.id}}</td>
+                        <td><b>服务内容：</b></td>
+                        <td>{{data.serviceInfo.serviceName}}</td>
+                    </tr>
+                    <tr>
+                        <td><b>服务状态：</b></td>
+                        <td>
+                            <span data-ng-if="data.serviceState==1">已上架</span>
+                            <span data-ng-if="data.serviceState==0">已下架</span>
+                        </td>
+                        <td><b>服务图片：</b></td>
+                        <td><a href="" data-ng-click="openServiceImage('sm')">点击查看</a></td>
+                    </tr>
+                    <tr>
+                        <td><b>服务时间段：</b></td>
+                        <td>{{data.serviceInfo.serviceTime}}</td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><b>已接单数：</b></td>
+                        <td>{{data.orderNum}}</td>
+                        <td><b>已完成数：</b></td>
+                        <td>{{data.finishNum}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <p><b>服务项目：</b></p>
+                            {{data.serviceInfo.remark}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" align="right">
+                            <!--
+                            <button class="btn btn-info" data-ng-click="open('sm')">预览</button>
+                            &nbsp;&nbsp;
+                            -->
+                            <button type="button" class="btn btn-success" data-ng-click="changeStatus()" data-ng-if="data.serviceState==0">
+                                上架
+                            </button>
+                            <button type="button" class="btn btn-danger" data-ng-click="changeStatus()" data-ng-if="data.serviceState==1">
+                                下架
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

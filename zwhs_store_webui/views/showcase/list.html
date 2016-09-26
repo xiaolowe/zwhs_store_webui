@@ -1,0 +1,40 @@
+<div class="pageheader">
+    <h4>商品管理</h4>
+</div>
+<section ng-controller="showcase.listCtrl" id="main-content">
+    <div class="row">
+        <div class="col-xs-4">
+        	<form class="form form-inline">
+	        	<div class="form-group">
+	        		<input class="form-control" />
+	        	</div>
+					<button type="button" class="btn btn-default">搜索</button>
+        	</form>
+        </div>
+        <div class="col-xs-8">
+        	<button ng-click="addPage()" class="pull-right btn btn-primary ">添加页面</button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <table  class="table ">
+				<tr>
+					<th>编号</th>
+					<th>标题</th>
+					<th width="100" class="center">操作</th>
+				</tr>
+				<tr ng-repeat="page in pages">
+					<td>{{page.id}}</td>
+					<td>{{page.title}}</td>
+					<td class="center">
+						<a class="op" href="" ui-sref="showcase.edit({id: page.id})">编辑</a>
+						<a class="op" href="" ng-click="delete(page)">删除</a>
+					</td>
+				</tr>
+			</table>
+
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,58 @@
+<div class="pageheader">
+    <h3>库存的商品</h3>
+</div>
+<section id="main-content">
+    <div class="row" ng-controller="instoreGoods">
+        <div class="col-sm-12">
+			<div class="form-inline">
+                <div class="form-group">
+				    <input type="input" class="form-control" placeholder="请输入品牌或商品名称" ng-model="gname">
+				</div>
+				<div class="form-group mf10">
+				    <label class="control-label">分类</label>
+				    <select class="form-control" ng-model="gcnumber">
+                        <option value="0">全部</option>
+						<option value="{{item.gcNo}}" ng-repeat="item in classify">{{item.gcName}}</option>
+					</select>
+				</div>
+				<div class="form-group pull-right">
+				    <button class="btn btn-primary btn-sm" type="button" data-ng-click="search()">搜索商品</button>
+				</div>
+			</div>
+        </div>
+        <div class="col-sm-12 mt10">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th style="width:9%">商品编号</th>
+                        <th style="width:15%">品牌</th>
+                        <th style="width:30%">商品名称</th>
+                        <th style="width:15%">规格</th>
+                        <th style="width:10%">分类</th>
+                        <th style="width:8%">售价</th>
+                        <th style="width:12%">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="rows.length==0">
+                        <td colspan="7" class="empty">没有查询到数据</td>
+                    </tr>
+                    <tr ng-repeat="data in rows">
+                        <td>{{data.goodsId}}</td>
+                        <td>{{data.brandName}}</td>
+                        <td>{{data.goodsName}}</td>
+                        <td>{{data.goodsSpec}}</td>
+                        <td>{{data.gcName}}</td>
+                        <td>¥ {{data.goodsSellprice}}</td>
+                        <td>
+                        	<a href="" ng-click="goodsDetails(data.goodsId)">编辑</a>
+                            &nbsp;
+                            <a href="" ng-click="commentManage(data.goodsId)">评论管理</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="10" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></uib-pagination>
+        </div>
+    </div>
+</section>

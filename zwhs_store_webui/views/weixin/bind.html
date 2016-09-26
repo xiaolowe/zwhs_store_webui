@@ -1,0 +1,18 @@
+<section class="main-content-wrapper"> 
+<div id="weixin_bind" class="panel">
+    <div class="panel-body">
+        <h3>绑定微信公众号</h3>
+        <div class="steps">
+            <ul class="clearfix">
+                <li ng-class="{current: $state.current.name=='bind.step_one'}">
+                   <span class="n">1</span>完善微信账号信息
+                </li>
+                <li ng-class="{current: $state.current.name=='bind.step_two'}">
+                    <span class="n">2</span>API接口绑定
+                </li>
+            </ul>
+        </div>
+        <div id="bind_form" ui-view></div>
+    </div>
+</div>
+</section>

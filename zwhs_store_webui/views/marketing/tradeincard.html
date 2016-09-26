@@ -1,0 +1,381 @@
+<div class="pageheader">
+    <h2>优惠券</h2>
+</div>
+<section id="main-content" class="showcase_edit" data-ng-controller="tradeincardController">
+	<!-- 优惠券列表 -->
+	<div class="row" data-ng-show="tradeincarddetails==0">
+      <div class="col-md-12">
+          <tabset>
+      			<tab heading="所有优惠券" ng-controller="allTradeincardController">
+		            <!-- 所有优惠券 tab -->
+		            <div class="row">&nbsp;</div>
+		            <div class="row">
+			            <div class="form-inline">
+				            <div class="col-sm-6">
+								<input type="text" class="form-control input" placeholder="请输入优惠券名称" data-ng-model="searchvalue">
+		                      	&nbsp;
+		                  		<button type="button" class="btn btn-primary btn-sm" data-ng-click="search()">搜索</button>
+			                </div>
+			                <div class="col-sm-6">
+			                	<div class="form-group pull-right">
+			                		<button type="button" class="btn btn-success btn-sm" data-ng-click="createTradincard()">新建优惠券</button>
+			                	</div>
+			                </div>
+			            </div>
+		            </div>
+	                <div class="row">&nbsp;</div>
+	                <div class="table-responsive">
+		                <table class="table table-striped table-bordered">
+		                    <thead>
+		                      <tr>
+		                        <th>优惠券名称</th>
+		                        <th>价值(元)</th>
+		                        <th>领取限制</th>
+		                        <th>有效期</th>
+		                        <th>领取次数</th>
+		                        <th>操作</th>
+		                      </tr>
+		                    </thead>
+		                    <tbody>
+		                    	<tr ng-if="rows.length==0">
+									<td colspan="6" class="empty">没有数据</td>
+								</tr>
+		                    	<tr ng-repeat="item in rows">
+		                    		<td class="vmiddle">{{item.couponName}}</td>
+		                    		<td class="vmiddle">{{item.couponMoney | currency}}<br /><span class="gray">最低消费:{{item.couponCondition | currency}}</span></td>
+		                    		<td class="vmiddle"><span ng-if="couponLimit==99999">不限张数</span><span ng-if="couponLimit!=99999">每用户限领{{item.couponLimit}}张</span><br /><span class="gray">库存{{item.couponNumber}}张</span></td>
+		                    		<td class="vmiddle">{{item.effectiveTime | date:"yyyy-MM-dd"}} 至<br>{{item.expirationTime | date:"yyyy-MM-dd"}}</td>
+		                    		<td class="vmiddle">{{item.couponAmount}}</td>
+		                    		<td class="vmiddle">
+		                    			<span data-ng-if="item.couponStatus==10 && item.expirationTime>=now"><button class="btn btn-danger btn-sm" data-ng-click="cancelCouponClick(item.couponId)">使失效</button></span>
+										<span data-ng-if="item.couponStatus==20 || item.expirationTime<now"><button class="btn btn-default btn-sm" disabled="disabled">已失效</button></span>
+		                    		</td>
+		                    	</tr>
+		                    </tbody>
+		                </table>
+						<div>
+							<div uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="10" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></div>
+						</div>
+	                </div>
+		            <!-- /所有优惠券 tab -->
+    		  	</tab>
+      			<tab heading="未开始" ng-controller="ordersListUnstartController">
+		            <!-- 未开始优惠券 tab -->
+		            <div class="row">&nbsp;</div>
+		            <div class="row">
+			            <div class="form-inline">
+				            <div class="col-sm-6">
+								<input type="text" class="form-control input" placeholder="请输入优惠券名称" data-ng-model="searchvalue">
+		                      	&nbsp;
+		                  		<button type="button" class="btn btn-primary btn-sm" data-ng-click="search()">搜索</button>
+			                </div>
+			                <div class="col-sm-6">
+			                	<div class="form-group pull-right">
+			                		<button type="button" class="btn btn-success btn-sm" data-ng-click="createTradincard()">新建优惠券</button>
+			                	</div>
+			                </div>
+			            </div>
+		            </div>
+	                <div class="row">&nbsp;</div>
+	                <div class="table-responsive">
+		                <table class="table table-striped table-bordered">
+		                    <thead>
+		                      <tr>
+		                        <th>优惠券名称</th>
+		                        <th>价值(元)</th>
+		                        <th>领取限制</th>
+		                        <th>有效期</th>
+		                        <th>领取次数</th>
+		                        <th>操作</th>
+		                      </tr>
+		                    </thead>
+		                    <tbody>
+		                    	<tr ng-if="rows.length==0">
+									<td colspan="6" class="empty">没有数据</td>
+								</tr>
+		                    	<tr ng-repeat="item in rows">
+		                    		<td class="vmiddle">{{item.couponName}}</td>
+		                    		<td class="vmiddle">{{item.couponMoney | currency}}<br /><span class="gray">最低消费:{{item.couponCondition | currency}}</span></td>
+		                    		<td class="vmiddle"><span ng-if="couponLimit==99999">不限张数</span><span ng-if="couponLimit!=99999">每用户限领{{item.couponLimit}}张</span><br /><span class="gray">库存{{item.couponNumber}}张</span></td>
+		                    		<td class="vmiddle">{{item.effectiveTime | date:"yyyy-MM-dd"}} 至<br>{{item.expirationTime | date:"yyyy-MM-dd"}}</td>
+		                    		<td class="vmiddle">{{item.couponAmount}}</td>
+		                    		<td class="vmiddle">
+		                    			<span data-ng-if="item.couponStatus==10"><button class="btn btn-danger btn-sm" data-ng-click="cancelCouponClick(item.couponId)">使失效</button></span>
+										<span data-ng-if="item.couponStatus==20"><button class="btn btn-default btn-sm" disabled="disabled">已失效</button></span>
+		                    		</td>
+		                    	</tr>
+		                    </tbody>
+		                </table>
+						<div>
+							<div uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="10" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></div>
+						</div>
+	                </div>
+		            <!-- /未开始优惠券 tab -->
+    		  	</tab>
+				<tab heading="进行中" ng-controller="ordersListOngoingController">
+		            <!-- 进行中优惠券 tab -->
+		            <div class="row">&nbsp;</div>
+		            <div class="row">
+			            <div class="form-inline">
+				            <div class="col-sm-6">
+								<input type="text" class="form-control input" placeholder="请输入优惠券名称" data-ng-model="searchvalue">
+		                      	&nbsp;
+		                  		<button type="button" class="btn btn-primary btn-sm" data-ng-click="search()">搜索</button>
+			                </div>
+			                <div class="col-sm-6">
+			                	<div class="form-group pull-right">
+			                		<button type="button" class="btn btn-success btn-sm" data-ng-click="createTradincard()">新建优惠券</button>
+			                	</div>
+			                </div>
+			            </div>
+		            </div>
+	                <div class="row">&nbsp;</div>
+	                <div class="table-responsive">
+		                <table class="table table-striped table-bordered">
+		                    <thead>
+		                      <tr>
+		                        <th>优惠券名称</th>
+		                        <th>价值(元)</th>
+		                        <th>领取限制</th>
+		                        <th>有效期</th>
+		                        <th>领取次数</th>
+		                        <th>操作</th>
+		                      </tr>
+		                    </thead>
+		                    <tbody>
+		                    	<tr ng-if="rows.length==0">
+									<td colspan="6" class="empty">没有数据</td>
+								</tr>
+		                    	<tr ng-repeat="item in rows">
+		                    		<td class="vmiddle">{{item.couponName}}</td>
+		                    		<td class="vmiddle">{{item.couponMoney | currency}}<br /><span class="gray">最低消费:{{item.couponCondition | currency}}</span></td>
+		                    		<td class="vmiddle"><span ng-if="couponLimit==99999">不限张数</span><span ng-if="couponLimit!=99999">每用户限领{{item.couponLimit}}张</span><br /><span class="gray">库存{{item.couponNumber}}张</span></td>
+		                    		<td class="vmiddle">{{item.effectiveTime | date:"yyyy-MM-dd"}} 至<br>{{item.expirationTime | date:"yyyy-MM-dd"}}</td>
+		                    		<td class="vmiddle">{{item.couponAmount}}</td>
+		                    		<td class="vmiddle">
+		                    			<span data-ng-if="item.couponStatus==10"><button class="btn btn-danger btn-sm" data-ng-click="cancelCouponClick(item.couponId)">使失效</button></span>
+										<span data-ng-if="item.couponStatus==20"><button class="btn btn-default btn-sm" disabled="disabled">已失效</button></span>
+		                    		</td>
+		                    	</tr>
+		                    </tbody>
+		                </table>
+						<div>
+							<div uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="10" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></div>
+						</div>
+	                </div>
+		            <!-- /进行中优惠券 tab -->
+    		  	</tab>
+      			<tab heading="已结束" ng-controller="ordersListFinishController">
+		            <!-- 已结束优惠券 tab -->
+		            <div class="row">&nbsp;</div>
+		            <div class="row">
+			            <div class="form-inline">
+				            <div class="col-sm-6">
+								<input type="text" class="form-control input" placeholder="请输入优惠券名称" data-ng-model="searchvalue">
+		                      	&nbsp;
+		                  		<button type="button" class="btn btn-primary btn-sm" data-ng-click="search()">搜索</button>
+			                </div>
+			                <div class="col-sm-6">
+			                	<div class="form-group pull-right">
+			                		<button type="button" class="btn btn-success btn-sm" data-ng-click="createTradincard()">新建优惠券</button>
+			                	</div>
+			                </div>
+			            </div>
+		            </div>
+	                <div class="row">&nbsp;</div>
+	                <div class="table-responsive">
+		                <table class="table table-striped table-bordered">
+		                    <thead>
+		                      <tr>
+		                        <th>优惠券名称</th>
+		                        <th>价值(元)</th>
+		                        <th>领取限制</th>
+		                        <th>有效期</th>
+		                        <th>领取次数</th>
+		                        <th>操作</th>
+		                      </tr>
+		                    </thead>
+		                    <tbody>
+		                    	<tr ng-if="rows.length==0">
+									<td colspan="6" class="empty">没有数据</td>
+								</tr>
+		                    	<tr ng-repeat="item in rows">
+		                    		<td class="vmiddle">{{item.couponName}}</td>
+		                    		<td class="vmiddle">{{item.couponMoney | currency}}<br /><span class="gray">最低消费:{{item.couponCondition | currency}}</span></td>
+		                    		<td class="vmiddle"><span ng-if="couponLimit==99999">不限张数</span><span ng-if="couponLimit!=99999">每用户限领{{item.couponLimit}}张</span><br /><span class="gray">库存{{item.couponNumber}}张</span></td>
+		                    		<td class="vmiddle">{{item.effectiveTime | date:"yyyy-MM-dd"}} 至<br>{{item.expirationTime | date:"yyyy-MM-dd"}}</td>
+		                    		<td class="vmiddle">{{item.couponAmount}}</td>
+		                    		<td class="vmiddle">
+										<span><button class="btn btn-default btn-sm" disabled="disabled">已失效</button></span>
+		                    		</td>
+		                    	</tr>
+		                    </tbody>
+		                </table>
+						<div>
+							<div uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="10" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></div>
+						</div>
+	                </div>
+		            <!-- /已结束优惠券 tab -->
+    		  	</tab>
+        	</tabset>
+       	</div>
+    </div>
+    <!-- /优惠券列表 -->
+    <!-- 优惠券详情 -->
+    <div class="row" data-ng-show="tradeincarddetails==1" data-ng-controller="tradeincardCreateController">
+        <div class="col-xs-6">
+			<div class="phone-design">
+			    <div class="phone-header"></div>
+			    <div class="phone-entry phone-overflow">
+			    	<div class="tpl-config">
+						<h1>{{companyname}}</h1>
+					</div>
+					<div class="row cardbg">
+				    	<div>
+				    		<h1 class="cardname">{{couponname}}</h1>
+				    		<h1 class="cardname" data-ng-if="couponname==null || couponname==''">优惠券名称</h1>
+				    	</div>
+						<div>
+							<h2 class="cardmony" data-ng-if="couponmoney!=null && couponmoney!=''">{{couponmoney | currency}}</h2>
+							<h2 class="cardmony" data-ng-if="couponmoney==null || couponmoney==''">¥ 0.00</h2>
+						</div>
+						<div>
+							<div class="needmoney" data-ng-if="couponcondition!=null && couponcondition!=''">订单需满{{couponcondition}}元可使用</div>
+							<div class="needmoney" data-ng-if="couponcondition==null || couponcondition==''">订单需满XX元可使用</div>
+						</div>
+						<div>
+							<div class="validdate" data-ng-if="effectivetime!=null && effectivetime!=''">有效日期：{{effectivetime}} -- {{expirationtime}}</div>
+							<div class="validdate" data-ng-if="effectivetime==null || effectivetime==''">有效日期：xxxx-xx-xx -- xxxx-xx-xx</div>
+						</div>
+					</div>
+					<div class="usedexplain">
+						<h4>使用说明:</h4>
+						{{coupondesc}}
+					</div>
+			    </div>
+			    <div class="phone-footer"></div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+		    <div class="row">
+		        <div class="col-md-12 col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-body cardcontrolbg">
+							<form novalidate class="form-horizontal" name="ngform">
+								<p>
+									<h2>优惠券基础信息</h2><hr>
+								</p>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">优惠券名称:</label>
+									<div class="col-sm-7">
+										<input type="text" class="form-control input-sm" placeholder="请填写优惠券名称" data-ng-model="couponname" name="couponname" required maxlength="15" />
+										<div ng-messages="!ngform.couponname.$pristine && ngform.couponname.$error">
+											<div ng-message="required">优惠券名称必填</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">发放总量:</label>
+									<div class="col-sm-7">
+										<div class="input-group">
+											<input type="number" class="form-control input-sm" data-ng-model="couponnumber" name="couponnumber" min="0" maxlength="5" max="99999" required ng-pattern="/^\+?[1-9][0-9]*$/" />
+											<span class="input-group-addon">张</span>
+										</div>
+										<div ng-messages="!ngform.couponnumber.$pristine && ngform.couponnumber.$error">
+											<div ng-message="required">优惠券发放总量必填</div>
+											<div ng-message="number">优惠券发放总量必须为数字</div>
+		                                    <div ng-message="min">优惠券发放总量不能为负数</div>
+		                                    <div ng-message="max">优惠券发放总量不能超过99999张</div>
+		                                    <div ng-message="pattern">优惠券发放总量必须是整数</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">面值:</label>
+									<div class="col-sm-7">
+										<div class="input-group">
+											<input type="number" class="form-control input-sm" data-ng-model="couponmoney" name="couponmoney" min="0.01" max="99999" required ng-pattern="/^\d+.?\d{0,2}$/" />
+											<span class="input-group-addon">元</span>
+										</div>
+										<div ng-messages="!ngform.couponmoney.$pristine && ngform.couponmoney.$error">
+											<div ng-message="required">优惠券面值必填</div>
+											<div ng-message="number">优惠券面值金额必须为数字</div>
+											<div ng-message="min">优惠券面值不能小于0.01元</div>
+											<div ng-message="max">优惠券面值金额过大</div>
+											<div ng-message="pattern">优惠券面值金额最多只能精确到分</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">订单金额:</label>
+									<div class="col-sm-7">
+										<div class="input-group">
+											<span class="input-group-addon">满</span>
+											<input type="text" class="form-control input-sm" data-ng-model="couponcondition" name="couponcondition" min="0.01" max="999999" required ng-pattern="/^\d+.?\d{0,2}$/" />
+											<span class="input-group-addon">元可使用</span>
+										</div>
+										<div ng-messages="!ngform.couponcondition.$pristine && ngform.couponcondition.$error">
+											<div ng-message="required">使用优惠券必须满足的订单金额必填</div>
+											<div ng-message="number">使用优惠券必须满足的订单金额必须为数字</div>
+											<div ng-message="min">使用优惠券必须满足的订单金额不能为负数</div>
+											<div ng-message="max">使用优惠券必须满足的订单金额过大</div>
+											<div ng-message="pattern">使用优惠券必须满足的订单金额最多只能精确到分</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">每人限领:</label>
+									<div class="col-sm-7">
+										<select class="form-control" data-ng-model="couponlimit" name="couponlimit">
+											<option value="1">1张</option>
+											<option value="2">2张</option>
+											<option value="3">3张</option>
+											<option value="5">5张</option>
+											<option value="10">10张</option>
+											<option value="99999">不限</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">生效日期:</label>
+									<div class="col-sm-7">
+										<input type="text" date-picker format="'yyyy-mm-dd'" minview="'3'" class="form-control" data-ng-model="effectivetime" name="effectivetime" required />
+										<div ng-messages="!ngform.effectivetime.$pristine && ngform.effectivetime.$error">
+											<div ng-message="required">优惠券生效日期必填</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">过期日期:</label>
+									<div class="col-sm-7">
+										<input type="text" date-picker format="'yyyy-mm-dd'" minview="'3'" class="form-control" data-ng-model="expirationtime" name="expirationtime" required />
+										<div ng-messages="!ngform.expirationtime.$pristine && ngform.expirationtime.$error">
+											<div ng-message="required">优惠券过期日期必填</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3 control-label">使用说明:</label>
+									<div class="col-sm-7">
+										<textarea rows="4" class="form-control" data-ng-model="coupondesc" required></textarea>
+									</div>
+										<div ng-messages="!ngform.coupondesc.$pristine && ngform.coupondesc.$error">
+											<div ng-message="required">优惠券使用说明必填</div>
+										</div>
+								</div>
+								<div class="form-group">
+									<div class="row" style="text-align:center">
+										<button type="button" class="btn btn-primary btn-sm" data-ng-click="submitClick()">提交</button>
+										&nbsp;&nbsp;
+										<button type="button" class="btn btn-danger btn-sm" data-ng-click="backlist()">返回</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /优惠券详情 -->
+</section>

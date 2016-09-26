@@ -1,0 +1,55 @@
+<div id="uploadfile">
+	<tabset>
+		<tab ng-if="!hideMy" heading="我的图片库" ng-controller="common.myAlbum">
+			<ul class="myPhotos clearfix">
+				<div class="empty" ng-if="photo_list.content.length==0">
+					图片库里面还没有图片
+				</div>
+				<li  ng-if="photo_list.content.length>0" ng-repeat="photo in photo_list.content">
+					<div class="photoWrapper" ng-class="{'selected':photo.material==selectedPhoto}" ng-click="selectImage(photo.material)"  style="background-image:url('{{photo.material|asImage:'80_100'}}')">
+						
+						<i ng-show="photo.material==selectedPhoto" class="fa fa-check photoIcon"></i>
+					</div>
+				</li>
+			</ul>
+			 <uib-pagination total-items="photo_list.totalElements" ng-model="currentPage" ng-change="pageChanged()" items-per-page="10" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></uib-pagination>
+
+			<div class="modal-footer center">
+				<button class="btn btn-primary" ng-click="choseThis()" ng-disabled="loading">选择这张图片</button>
+			</div>
+		</tab>
+		<tab heading="上传图片" >
+			<form file-to-blob >
+				<div class="modal-body">
+					<span class="btn btn-default fileinput-button">
+			            <span>选择文件</span>
+			            <input id="file" type="file" name="files" accept=".jpg,.png,.gif,.jpeg">
+			        </span>
+					<div class="row">
+						<div class="col-sm-6 image">
+							<h3>原始图片<span>推荐尺寸
+								<font class="n" ng-if="ratio.width >0 ">{{ratio.width}}x{{ratio.height}}</font>
+								<font class="n" ng-if="ratio.width ==0 ">没有限制</font>
+							</span></h3>
+							<div ng-if="fileread == null" class="empty">
+								没有选择文件
+							</div>
+				           	<div ng-if="fileread != null">
+								<img id="crop" image-crop crop="crop" filedata="fileread" ratio="ratio">
+							</div>
+						</div>
+						<div class="col-sm-6 ">
+							<h3>预览图片<span>当前尺寸<font id="crop_size" class="n"></font></span></h3>
+							<div class="preview" ng-if="fileread != null">
+								<img id="crop_preview" ng-src="{{fileread}}" />
+							</div>
+						</div>
+			        </div>
+				</div>
+				<div class="modal-footer center">
+					<button class="btn btn-primary" ng-click="crop()" ng-disabled="loading">剪裁并保存图片</button>
+				</div>
+			</form>
+		</tab>
+	</tabset>
+</div>

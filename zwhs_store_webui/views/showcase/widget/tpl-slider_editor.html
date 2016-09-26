@@ -1,0 +1,80 @@
+<div id="slider_editor" class="panel panel-default">
+	<div class="panel-heading">轮播配置</div>
+	<div class="panel-body">
+		<a href="" class="add" ng-click="addSlider()"><i class="fa fa-plus-circle"></i>添加一个图片链接</a>
+		<table class="table">
+			<tr class="clearfix item" ng-repeat="item in $parent.selectedItem.items">
+				<td class="image">
+					<a href="" ratio="320_160" upload-file link="item.image">
+						<img ng-src="{{item.image|asImage:'320_160'}}" />
+						<span>修改图片</span>
+					</a>
+				</td>
+				<td>
+					<div class="line clearfix">
+						<label class="control-label">链接:</label>
+						<div class="links" links link="item.link" ></div>
+					</div>
+				</td>
+				<td class="trash">
+					<i  ng-click="deleteSlider(item)" class="fa fa-trash"></i>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<style type="text/css">
+	#slider_editor .links p{
+		margin:10px 0px 0px;
+	}
+	#slider_editor .links p input{
+		font-size:11px;
+		width: 100%;
+	}
+	#slider_editor .add{
+		display: block;
+		width: 100%;
+		background:#f8f8f8;
+		padding:10px 5px;
+		border:1px solid #ddd;
+		font-size:14px;
+	}
+	#slider_editor .add i{
+		color:#27ae60;
+		margin:0px 10px;
+	}
+	#slider_editor .item .image{
+		width: 140px;
+	}
+
+	#slider_editor .item .image a{
+		width: 120px;
+		display: block;
+		position: relative;
+	}
+	#slider_editor .item .image img{
+		width: 120px;
+	}
+	#slider_editor .item .image span{
+		line-height: 2em;
+		position: absolute;
+		width:120px;
+		text-align: center;
+		background:rgba(0,0,0,.5);
+		color:#fff;
+		bottom:0px;
+	}
+	#slider_editor .table tr:first-child td{
+		border-top: 0px;
+	}
+
+	#slider_editor .item .trash{
+		vertical-align: middle;
+		font-size:18px;
+		color:#a8a8a8;
+	}
+
+	#slider_editor .item .trash i{
+		cursor: pointer;
+	}
+</style>

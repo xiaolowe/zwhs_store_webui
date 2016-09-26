@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <!--logo start-->
+            <div class="brand" ng-controller="logoController">
+                <a href="" class="logo" link="logoimage" upload-file ratio="'60_60'" data-ng-show="authorize!=0">
+                    <img class="logoimage" ng-src="{{logoimage|asImage}}" alt="点击更改店铺LOGO" title="点击更改店铺LOGO" />
+                    <img class="slogen" src="img/slogen.png" />
+                </a>
+                <a href="" data-ng-show="authorize==0">
+                    <img class="logoimage" src="img/logo.png" style="width:100px;margin:0 40px" />
+                    <!-- <img class="slogen" src="img/slogen.png" /> -->
+                </a>
+            </div>
+            <!--logo end-->
+            <div class="collapse navbar-collapse" id="main-menu">
+                <ul class="menu">
+                    <li ng-class="{current: $state.includes('shop')}" >
+                        <a href="" ui-sref="shop.dashboard" data-ng-if="authorize!=0">商城</a>
+                        <a href="" ui-sref="user.identification" data-ng-if="authorize==0">商城</a>
+                    </li>
+                    <li ng-class="{current: $state.includes('weixin')}">
+                        <a href="" ui-sref="weixin.my" data-ng-if="authorize!=0">微信</a>
+                        <a href="" ui-sref="user.identification" data-ng-if="authorize==0">微信</a>
+                    </li>
+                    <li ng-class="{current: $state.includes('marketing')}">
+                        <a href="" ui-sref="marketing.tradeincard" data-ng-if="authorize!=0">营销</a>
+                        <a href="" ui-sref="user.identification" data-ng-if="authorize==0">营销</a>
+                    </li>
+                    <li ng-class="{current: $state.includes('data')}">
+                        <a href="http://data.syisy.com/data/authc?token={{token}}" data-ng-if="authorize!=0">数据平台</a>
+                        <a href="" ui-sref="user.identification" data-ng-if="authorize==0">数据平台</a>
+                    </li>
+                </ul>
+                <div class="profile pull-right">
+                    <span class="meta">
+                        <span class="text" data-ng-if="authorize!=0">{{companyname}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span  class="text" data-ng-if="authorize!=0">店铺分销码：{{retail_code}}</span>
+                        <span class="text" data-ng-if="authorize==0">未认证用户</span>
+                    </span>
+                     <a class="logout" href="" data-ng-click="clickLogout()">
+                        <i class="fa fa-sign-out"></i>退出
+                    </a>
+                </div>  
+            </div>
+
+        </div>
+    </div>
+</div>

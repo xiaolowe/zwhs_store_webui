@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+	<div class="panel-heading">文本编辑</div>
+	<div class="panel-body">
+		<form class="form-horizontal" novalidate="">
+			<div class="ueditor" name="content" config=" {toolbars:[
+					['bold', 'italic', 'underline', 'strikethrough', 'forecolor', 'backcolor', 'justifyleft', 'justifycenter', 'justifyright', '|', 'insertunorderedlist', 'insertorderedlist', 'blockquote'],
+					['emotion', 'uploadimage', 'link', 'removeformat', '|', 'rowspacingtop', 'rowspacingbottom', 'lineheight', 'paragraph', 'fontsize'],
+					['inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols']
+				],
+            autoClearinitialContent:true,
+            wordCount:false,
+            elementPathEnabled:false,
+            initialFrameWidth:null,
+            initialFrameHeight:300,
+      }" ng-model="$parent.selectedItem.content" required></div>
+		</form>
+	</div>
+</div>

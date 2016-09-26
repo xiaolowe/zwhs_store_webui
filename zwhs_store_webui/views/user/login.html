@@ -1,0 +1,36 @@
+<div class="login-wrapper">
+    <div class="login animated fadeInDown" ng-controller="loginCtrl">
+        <h3 class="title">
+            后台登录
+        </h3>
+        <div class="body">
+            <form class="form-horizontal" novalidate id="loginForm" name="loginForm" ng-submit="login(loginForm.$valid)">
+                <div class="form-group" ng-class="{'has-error' : loginForm.loginName.$invalid && !loginForm.loginName.$pristine}">
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" name="loginName" ng-model="user.loginName" placeholder="请输入手机号码" required ng-maxlength="11" maxlength="11">
+                        <p ng-show="loginForm.loginName.$invalid && !loginForm.loginName.$pristine" class="help-block">用户手机号码为必填</p>
+                    </div>
+
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+                    <div class="col-md-12">
+                        <input type="password" class="form-control" ng-model="user.password" name="password" placeholder="请输入密码" required ng-maxlength="15" maxlength="15">
+                        <p ng-show="!loginForm.password.$pristine && loginForm.password.$error.required" class="help-block">密码必须填写.</p>
+                        <p ng-show="!loginForm.password.$pristine && loginForm.password.$error.maxlength" class="help-block">密码不能多于15位.</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-block">登录</button>
+                    </div>
+                    <div class="col-md-12">
+                        <a ui-sref="reg" class="btn btn-default btn-block">注册</a>
+                    </div>
+                    <div class="col-md-12">
+                        <a href='' ng-click="forgotPassword()" class="text-danger">忘记密码?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

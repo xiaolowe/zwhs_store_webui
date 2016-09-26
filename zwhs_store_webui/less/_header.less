@@ -1,0 +1,103 @@
+#header {
+    background:#247ae5;
+    z-index: 200;
+    width: 100%;
+    border-top: 3px solid @primaryColor;
+    border-radius:0px;
+    margin:0px;
+    
+    margin-right: 0;
+    .brand {
+        float: left;
+    }
+    .logo{
+        width: 200px;
+        height:60px;
+        position:relative;
+        display: block;
+    }
+    .logo:after{
+        content:"修改";
+        font-size:9px;
+        text-align:center;
+        color:#fff;
+        position: absolute;
+        background:rgba(0,0,0,.8);
+        bottom: 5px;
+        height: 20px;
+        line-height:20px;
+        width: 50px;
+    }
+    .logo span{
+        position:absolute;
+        left:105px;
+        bottom:8px;
+        font-size:16px;
+        font-style:italic;
+        color:#fff;        
+    }
+    .logo .logoimage {
+        position:absolute;
+        top:5px;
+        height:50px;
+        width:60px;
+        border-right:1px solid #1763c1;
+        padding-right:10px;
+    }
+    .logo .slogen {
+        position:absolute;
+        bottom:0px;
+        height:auto;
+        width:auto;
+        padding-left:60px;
+    }
+    .navbar-nav {
+        margin: 0;
+    }
+    .navbar-left {
+        float: left;
+    }
+    .navbar-right {
+        float: right;
+    }
+    .btn i{
+        padding:0;
+    }
+    #main-menu .menu{
+        padding:0px;
+        margin:0px;
+        float:left;
+    }
+    #main-menu .menu li{
+        list-style: none;
+        display: inline-block;
+        position: relative;
+    }
+    #main-menu .menu li a {
+        color:  #fff;
+        display: block;
+        padding: 20px 30px 20px 30px;
+        font-size:@14px;
+    }
+    #main-menu .menu li.current a{
+        border-bottom:2px solid #fff;
+    }
+    .profile{
+        height:60px;
+        position:relative;
+        width:300px;
+        .logout{
+            position:absolute;
+            right:0px;
+            bottom:8px;
+            color:#fff;
+        }
+        .meta{
+            color:#fff;
+            position:absolute;
+            right:55px;
+            bottom:8px;
+        }
+    }
+  
+}

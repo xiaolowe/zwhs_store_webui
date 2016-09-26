@@ -1,0 +1,88 @@
+<div class="pageheader">
+    <h3>我的微信</h3>
+</div>
+
+<section id="main-content">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 ">
+            <tabset>
+                <tab heading="微信公众号资料">
+                    <form class="form-horizontal mt10"  name="ngform" role="form" novalidate>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">公众号名称：</label>
+                            <div class="col-sm-8">
+                                <input type="weixin_p_name" name="wechatEntName" class="form-control"  required ng-model="wxInfo.wechatEntName">
+                                <div ng-messages="!ngform.wechatEntName.$pristine && ngform.wechatEntName.$error">
+                                    <div ng-message="required">公众号不能为空</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">公众号原始ID：</label>
+                            <div class="col-sm-8">
+                                <input type="weixin_o_mame" class="form-control" name="wecharEntId" required ng-model="wxInfo.wecharEntId"  >
+                                <div ng-messages="!ngform.wecharEntId.$pristine && ngform.wecharEntId.$error">
+                                    <div ng-message="required">公众号原始ID不能为空</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">微信号：</label>
+                            <div class="col-sm-8">
+                                <input type="weixin_name" class="form-control" name="wechatId" required   ng-model="wxInfo.wechatId" >
+                                <div ng-messages="!ngform.wechatId.$pristine && ngform.wechatId.$error">
+                                    <div ng-message="required">微信号不能为空</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">AppID：</label>
+                            <div class="col-sm-8">
+                                <input type="appid" class="form-control" ng-model="wxInfo.appId" name="appId" required  >
+                                <div ng-messages="!ngform.appId.$pristine && ngform.appId.$error">
+                                    <div ng-message="required">AppID不能为空</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">AppSecret：</label>
+                            <div class="col-sm-8">
+                                <input type="appsecret" class="form-control"  ng-model="wxInfo.appSecret" required >
+                                <div ng-messages="!ngform.appSecret.$pristine && ngform.appSecret.$error">
+                                    <div ng-message="required">AppSecret不能为空</div>
+                                </div>
+                            </div>
+                        </div>
+             
+                        <div class="form-group">
+                            <div class="center">
+                                <button type="submit" ng-click="save()" class="btn btn-primary"  ng-disabled="ngform.$invalid">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                </tab>
+                <tab heading="绑定信息">
+                    <div class="alert mt10 alert-warning alert-dismissable">
+                         <strong>提示!</strong>
+                         复制此处Url和Token到微信公众平台<i>开发者中心</i>进行绑定
+                    </div>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">URL</label>
+                            <div class="col-sm-8">
+                                <input type="url" class="form-control" ng-value="wxInfo.wechatUrl" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Token</label>
+                            <div class="col-sm-8">
+                                <input type="token" class="form-control" ng-value="wxInfo.wechatToken" >
+                            </div>
+                        </div>
+                    </form>
+                </tab>
+            </tabset>
+            </div>
+        </div>
+    </div>
+</section>

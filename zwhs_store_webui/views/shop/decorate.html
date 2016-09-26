@@ -1,0 +1,50 @@
+<div id="shop_decorate">
+	<div class="pageheader">
+	    <h3>店铺装修</h3>
+	</div>
+	<section id="main-content" class="showcase_edit">
+	    <div class="row">
+	        <div class="col-xs-6">
+				<div class="phone-design">
+				    <div class="phone-header"></div>
+				    <div class="phone-entry">
+				    	<div class="tpl-config">
+							<h1>{{shop.companyName}}</h1>
+						</div>
+						<div id="phone-items" ui-sortable="{items:'.dragable',axis: 'y'}" ng-model="items">
+						    <div ng-repeat="item in items" class="phone-field clearfix dragable" ng-class="{'selected': selectedItem == item}" ng-click="select(item)" >
+						    	<div class="control-group">
+						    		<showcase-element-parser item="item"></showcase-element-parser>
+								</div>
+								<div class="actions">
+								    <div class="actions-wrap">
+								   		<span ng-click="delete(item)" class="action">删除</span>
+								   	</div>
+								</div>
+							</div>
+						</div>
+				    </div>
+				    <div class="phone-footer">
+						<h4>添加组件</h4>
+				    	<ul class="tool_bar clearfix">
+							<li><button ng-click="add('tpl-shop')" class="btn btn-xs btn-primary">店铺头部</button></li>
+							<li><button ng-click="add('tpl-slider')" class="btn btn-xs btn-primary">轮播图</button></li>
+							<li><button ng-click="add('tpl-title')" class="btn btn-xs btn-primary">标题</button></li>
+							<li><button ng-click="add('tpl-goods')" class="btn btn-xs btn-primary">商品列表</button></li>
+							<li><button ng-click="add('tpl-text')" class="btn btn-xs btn-primary">富文本</button></li>
+							<li><button ng-click="add('tpl-coupon')" class="btn btn-xs btn-primary">优惠券</button></li>
+						</ul>
+				    </div>
+				</div>
+			</div>
+			<div class="col-xs-6">
+				<div class="phone-config" ng-if="selectedItem">
+					<showcase-element-editor item="selectedItem"></showcase-element-editor>
+				</div>
+			</div>
+		</div>
+		<div class="center">
+			<button ng-click="save()" class="btn btn-primary">保存</button>
+		</div>
+	</section>
+</div>

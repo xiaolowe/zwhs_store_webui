@@ -1,0 +1,60 @@
+<div id="assets_list">
+<div class="pageheader">
+    <h3>素材库</h3>
+</div>
+<section id="main-content">
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+			<tabset>
+                <tab heading="我的图文库" ng-controller="assets.my">
+                	<div class="row mt10">
+	                	<div class="col-sm-4">
+	                		<div class="input-group">
+						      <input type="text" ng-model="searchValue" class="form-control" placeholder="标题/作者/内容">
+						      <span class="input-group-btn">
+						        <button ng-click="pageChanged()" class="btn btn-default">
+						        	<i class="fa fa-search"></i>
+						        </button>
+						      </span>
+						    </div>
+	                	</div>
+	                	<div class="col-sm-8">
+	                		<a ui-sref="weixin.assets_add" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>添加一个图文</a>
+	                	</div>
+                	</div>
+                	<div class="row list">
+                		<div class="col-sm-12" ng-if="assetsList.length ==0">
+                			<div class="empty">
+                				暂时没有素材
+                			</div>
+                		</div>
+                		<div class="col-sm-4 " ng-repeat="asset in assetsList">
+                			<div class="item">
+	                			<h3>
+	                				<a class="text" href="">{{asset.articleTitle}}</a>
+	                			</h3>
+								<p class="time">
+	                				{{asset.insDate | date:"shortTime"}}
+	                			</p>
+	                			<div class="img">
+	                				<img ng-src="{{asset.coverPic | asImage:'300_300'}}">
+	                			</div>
+	                			<div class="opration clearfix">
+	                				<a href="" ui-sref="weixin.assets_edit({id:asset.id})" ><i class="fa fa-pencil"></i></a>
+	                				<a href="" ng-click="del(asset);" ><i class="fa fa-trash"></i></a>
+	                			</div>
+                			</div>	
+                		</div>
+                	</div>
+                	<div class="row">
+	                	<div class="cols-sm-12">
+							<uib-pagination class="pull-right" total-items="assetsData.totalElements" ng-model="currentPage" ng-change="pageChanged()" items-per-page="pageSize" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></uib-pagination>
+						</div>
+					</div>
+
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</section>
+</div>

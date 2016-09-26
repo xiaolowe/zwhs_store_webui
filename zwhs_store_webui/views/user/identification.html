@@ -1,0 +1,159 @@
+<div id="identification" ng-controller="userIdentification" data-ng-show="storestate==-1 || storestate==2">
+	<div class="pageheader">
+	    <h3>实名认证</h3>
+	</div>	
+	<div class="alert alert-warning">
+		实名认证后才能进行上架商品、提款等功能。
+	</div>
+	<div class="row">
+	<form role="form" name="ngform" novalidate>	
+		<div class="col-sm-4">
+			<fieldset>
+				 <legend>母婴店基本信息</legend>
+				<div class="form-group">
+                    <label>母婴店名称：</label>
+                    <input type="text" class="form-control" placeholder="请输入母婴店名称" data-ng-model="companyname" name="companyname" required maxlength="20">
+					<div ng-messages="!ngform.companyname.$pristine && ngform.companyname.$error">
+						<div ng-message="required">母婴店名称必填</div>
+					</div>
+                </div>
+                <div class="form-group">
+                    <label>所在省：</label>
+					<select class="form-control" data-ng-model="regionprov" data-ng-change="changeProv()" name="regionprov" required>
+						<option value="" selected="selected">请选择所在省份</option>
+						<option value="{{prov.regionCode}}" data-ng-repeat="prov in provs">{{prov.regionName}}</option>
+					</select>
+					<div ng-messages="!ngform.regionprov.$pristine && ngform.regionprov.$error">
+						<div ng-message="required">请选择所在省份</div>
+					</div>
+                </div>
+                <div class="form-group">
+                    <label>所在市：</label>
+					<select class="form-control" data-ng-model="regioncity" data-ng-change="changeCity()" name="regioncity" required id="regioncity">
+						<option value="" data-ng-selected="">请选择所在城市</option>
+						<option value="{{city.regionCode}}" data-ng-repeat="city in citys">{{city.regionName}}</option>
+					</select>
+					<div ng-messages="!ngform.regioncity.$pristine && ngform.regioncity.$error">
+						<div ng-message="required">请选择所在城市</div>
+					</div>
+                </div>
+                <div class="form-group">
+                    <label>所在区：</label>
+					<select class="form-control" data-ng-model="companyregion" data-ng-change="changeRegion()" name="companyregion" required id="companyregion">
+						<option value="" data-ng-selected="">请选择所在区域</option>
+						<option value="{{region.regionCode}}" data-ng-repeat="region in regions">{{region.regionName}}</option>
+					</select>
+					<div ng-messages="!ngform.companyregion.$pristine && ngform.companyregion.$error">
+						<div ng-message="required">请选择所在区域</div>
+					</div>
+                </div>
+                <div class="form-group">
+                    <label>母婴店地址：</label>
+                    <input type="text" class="form-control" placeholder="请输入母婴店地址" data-ng-model="companyaddress" name="companyaddress" required maxlength="50">
+					<div ng-messages="!ngform.companyaddress.$pristine && ngform.companyaddress.$error">
+						<div ng-message="required">母婴店地址必填</div>
+					</div>
+                </div>
+			</fieldset>
+		</div>
+		<div class="col-sm-4">
+			<fieldset>
+				<legend>银行卡信息</legend>
+				<div class="form-group">
+	                <label>提款卡号：</label>
+	                <input type="text" class="form-control" placeholder="请输入银行卡号" data-ng-model="bankaccnumber" name="bankaccnumber" required maxlength="20">
+					<div ng-messages="!ngform.bankaccnumber.$pristine && ngform.bankaccnumber.$error">
+						<div ng-message="required">提款卡号必填</div>
+					</div>
+	            </div>
+	            <div class="form-group">
+	                <label>开户行：</label>
+	                <input type="text" class="form-control" placeholder="请输入银行账号开户行" data-ng-model="bankaccname" name="bankaccname" required maxlength="30">
+					<div ng-messages="!ngform.bankaccname.$pristine && ngform.bankaccname.$error">
+						<div ng-message="required">开户行必填</div>
+					</div>
+	            </div>
+	            <div class="form-group">
+	                <label>持卡人：</label>
+	                <input type="text" class="form-control" placeholder="请输入持卡人姓名" data-ng-model="bankowner" name="bankowner" required maxlength="20">
+					<div ng-messages="!ngform.bankowner.$pristine && ngform.bankowner.$error">
+						<div ng-message="required">持卡人姓名必填</div>
+					</div>
+	            </div>
+	        </fieldset>
+		</div>	
+		<div class="col-sm-4">
+			<fieldset>
+				<legend>实体店注册信息</legend>
+				<div class="form-group">
+	                <label>法人姓名：</label>
+	                <input type="text" class="form-control" placeholder="请输入店铺法人姓名" data-ng-model="storeowner" name="storeowner" required maxlength="20">
+					<div ng-messages="!ngform.storeowner.$pristine && ngform.storeowner.$error">
+						<div ng-message="required">法人姓名必填</div>
+					</div>
+	            </div>
+				<div class="form-group">
+	                <label>法人身份证号：</label>
+	                <input type="text" class="form-control" placeholder="请输入店铺法人身份证号码" data-ng-model="storeownercard" name="storeownercard" required ng-pattern="/^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X|x)$/" maxlength="18">
+					<div ng-messages="!ngform.storeownercard.$pristine && ngform.storeownercard.$error">
+						<div ng-message="required">法人身份证号必填</div>
+						<div ng-message="pattern">法人身份证号格式错误</div>
+					</div>
+	            </div>
+	            <div class="form-group">
+	                <label>营业执照号：</label>
+	                <input type="text" class="form-control" placeholder="请输入店铺营业执照编号" data-ng-model="businesslicence" name="businesslicence" required maxlength="20">
+					<div ng-messages="!ngform.businesslicence.$pristine && ngform.businesslicence.$error">
+						<div ng-message="required">营业执照号必填</div>
+					</div>
+	            </div>
+	            <div class="form-group">
+	                <label>法人身份证：</label>
+					<button link="image1" upload-file ratio="'595_842'" hidemy="true" class="btn btn-sm btn-primary">点击上传</button>
+					&nbsp;
+					<span data-ng-if="image1">
+						<a href="" data-ng-click="openImage1('lg')">点击查看已上传图片</a>
+					</span>
+	            </div>
+	            <div class="form-group">
+	                <label>税务登记证：</label>
+					<button link="image2" upload-file ratio="'842_595'" hidemy="true" class="btn btn-sm btn-primary">点击上传</button>
+					&nbsp;
+					<span data-ng-if="image2">
+						<a href="" data-ng-click="openImage2('lg')">点击查看已上传图片</a>
+					</span>
+	            </div>
+	            <div class="form-group">
+	                <label>组织机构代码证：</label>
+					<button link="image3" upload-file ratio="'842_595'" hidemy="true" class="btn btn-sm btn-primary">点击上传</button>
+					&nbsp;
+					<span data-ng-if="image3">
+						<a href="" data-ng-click="openImage3('lg')">点击查看已上传图片</a>
+					</span>
+	            </div>
+	            <div class="form-group">
+	                <label>经营地点照片：</label>
+					<button link="image4" upload-file ratio="'842_595'" hidemy="true" class="btn btn-sm btn-primary">点击上传</button>
+					&nbsp;
+					<span data-ng-if="image4">
+						<a href="" data-ng-click="openImage4('lg')">点击查看已上传图片</a>
+					</span>
+	            </div>
+	        </fieldset>
+		</div>
+	</form>	
+	</div>
+	<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 center">
+			 <button class="btn  btn-success  btn-block" data-ng-click="regsubmit()" ng-disabled="ngform.$invalid">提交</button>
+		</div>
+	</div>
+</div>
+<div data-ng-show="storestate==0" class="pageheader">
+	<!--待审核-->
+	<h1>认证正在审核中，请耐心等待。<br><br><a href="/#/shop/dashboard">[返回后台首页]</a></h1>
+</div>
+<div data-ng-show="storestate==3" class="pageheader">
+	<!--已冻结-->
+	<h1>该账号已被冻结，请联系管理员。<br><br><a href="/#/shop/dashboard">[返回后台首页]</a></h1>
+</div>

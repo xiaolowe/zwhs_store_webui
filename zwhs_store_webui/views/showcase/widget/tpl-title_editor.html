@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+	<div class="panel-heading">页面配置</div>
+	<div class="panel-body">
+		<form class="form-horizontal" novalidate="">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">显示</label>
+				<div class="col-sm-9">
+					<label class="radio-inline">
+						<input type="radio" name="textAlign" value="left" ng-model="$parent.selectedItem.textAlign">左对齐
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="textAlign" value="center" ng-model="$parent.selectedItem.textAlign">居中
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="textAlign" value="right" ng-model="$parent.selectedItem.textAlign">右对齐
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">标题名</label>
+				<div class="col-sm-6">
+					<input class="form-control" ng-model="$parent.selectedItem.title" placeholder="标题">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">副标题</label>
+				<div class="col-sm-6">
+					<input class="form-control" ng-model="$parent.selectedItem.subtitle" placeholder="副标题">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label">背景颜色</label>
+				<div class="col-sm-6">
+					<input type="color"  class="form-control" ng-model="$parent.selectedItem.backgroundColor" name="color">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

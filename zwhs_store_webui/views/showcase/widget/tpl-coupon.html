@@ -1,0 +1,44 @@
+<div class="tpl-coupon">
+    <div class="coupon" ng-repeat="coupon in item.coupons">
+     	<h4>{{coupon.couponMoney|currency}}</h4>
+     	<p>满{{coupon.couponCondition}}可领</p>
+    </div>
+</div>
+<style>
+
+	.tpl-coupon .coupon:first-child h4{
+		color:#fa5262;
+	}
+	.tpl-coupon .coupon:first-child{
+		background:#ffeaec;
+		border-color:#ff93b2;
+		color:#fa5262;
+	}
+	.tpl-coupon .coupon:last-child h4{
+		color:#ff9664;
+	}
+	.tpl-coupon .coupon:last-child{
+		background:#ffeae3;
+		border-color:#ffa492;
+		color:#ff9664;
+	}
+    .tpl-coupon .coupon{
+    	width:95px;
+    	padding: 10px 0px;
+    	display: inline-block;
+    	text-align: center;
+    	background: #f3ffef;
+    	border-color:#98e27f;
+    	color:#7acf8d;
+    	border-width: 1px;
+    	border-style: solid;
+    	margin:5px;
+    	border-radius: 5px;
+    }
+    .tpl-coupon .coupon h4{
+    	line-height: 25px;
+    	color:#7acf8d;
+    	font-weight: bold;
+    }
+
+</style>

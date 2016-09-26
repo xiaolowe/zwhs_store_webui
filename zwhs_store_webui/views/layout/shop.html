@@ -1,0 +1,123 @@
+<aside class="sidebar sidebar-left">
+	<nav>
+	    <h5 class="sidebar-header"><i class="fa fa-fw fa-tachometer"></i>店铺</h5>
+	    <ul class="nav nav-stacked">
+	        <li ui-sref-active="active">
+	        	<a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	        		店铺概况
+	        	</a>
+	            <a href="" ui-sref="shop.dashboard" data-ng-if="authorize!=0">
+	                店铺概况
+	            </a>
+	        </li>
+	        <li ui-sref-active="active">
+	            <a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	                店铺装修
+	            </a>
+	            <a href="" ui-sref="shop.decorate" data-ng-if="authorize!=0">
+	                店铺装修
+	            </a>
+	        </li>
+	    </ul>
+	    <h5 class="sidebar-header">订单</h5>
+	    <ul class="nav nav-stacked">
+	        <li data-ng-class="{active: $state.includes('shop.orders') || $state.includes('shop.orderdetails')}">
+	            <a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	                商品订单
+	            </a>
+	            <a href="" ui-sref="shop.orders" data-ng-if="authorize!=0">
+	                	商品订单
+	            </a>
+	        </li>
+	        <li data-ng-class="{active: $state.includes('shop.fxorders') || $state.includes('shop.fx_orderdetails')}">
+	            <a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	                	分销订单
+	            </a>
+	            <a href="" ui-sref="shop.fxorders" data-ng-if="authorize!=0">
+	                	分销订单
+	            </a>
+	        </li>
+	        <li  ui-sref-active="active">
+	            <a href="" ui-sref="shop.serviceOrders" >
+	               服务订单
+	            </a>
+	           
+	        </li>
+	    </ul>
+	    <h5 class="sidebar-header">商品库</h5>
+	    <ul class="nav nav-stacked">
+	        <li ui-sref-active="active">
+	            <a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	                上架的商品
+	            </a>
+	            <a href="" ui-sref="shop.goodsonsale" data-ng-if="authorize!=0">
+	                上架的商品
+	            </a>
+	        </li>
+	        <li ng-class="{active: $state.includes('shop.goodssoldout')}">
+	            <a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	                售罄的商品
+	            </a> 
+	            <a href="" ui-sref="shop.goodssoldout" data-ng-if="authorize!=0">
+	                售罄的商品
+	            </a>
+	        </li>
+	        <li ui-sref-active="active">
+	            <a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	                库存的商品
+	            </a>
+	            <a href="" ui-sref="shop.goodsinstore" data-ng-if="authorize!=0">
+	                库存的商品
+	            </a>
+	        </li>
+	        <li ng-class="{active: $state.includes('shop.platformdetails') || $state.includes('shop.goodsplatform')}">
+	            <a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	                平台商品库
+	            </a>
+	            <a href="" ui-sref="shop.goodsplatform" data-ng-if="authorize!=0">
+	                平台商品库
+	            </a>
+	        </li>
+	        
+	    </ul>
+
+		 <h5 class="sidebar-header">服务</h5>
+	    <ul class="nav nav-stacked">	       
+	        <li ui-sref-active="active" >
+	      
+	            <a href="" ui-sref="shop.service" >
+	                我的服务
+	            </a>
+	        </li>
+	    </ul>
+
+	    <h5 class="sidebar-header">会员管理</h5>
+	    <ul class="nav nav-stacked">
+	        <li ui-sref-active="active">
+	            <a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	                所有会员
+	            </a>
+	            <a href="" ui-sref="shop.users" data-ng-if="authorize!=0">
+	                所有会员
+	            </a>
+	        </li>
+	    </ul>
+	    
+	    <h5 class="sidebar-header">财务管理</h5>
+	    <ul class="nav nav-stacked">
+	        <li ng-class="{active: $state.includes('shop.finace') || $state.includes('shop.finacedetails')}">
+	            <a href="" ui-sref="user.identification" data-ng-if="authorize==0">
+	                提现
+	            </a>
+	            <a href="" ui-sref="shop.finace" data-ng-if="authorize!=0">
+	                提现
+	            </a>
+	        </li>
+	    </ul>
+	</nav>
+</aside>
+<section class="main-content-wrapper">
+	<div ui-view></div>
+</section>
+<!-- Footer -->
+<div ng-include="'views/layout/footer.html'"></div>

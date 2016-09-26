@@ -1,0 +1,40 @@
+<aside class="sidebar sidebar-left"  ng-if="isBind">
+	<nav>
+	    <h5 class="sidebar-header"><i class="fa fa-fw fa-weixin"></i>微信</h5>
+	    <ul class="nav nav-stacked">
+	        <li ui-sref-active="active">
+	            <a href="" ui-sref="weixin.my">
+	                我的微信
+	            </a>
+	        </li>
+	        <li ui-sref-active="active">
+	            <a href="" ui-sref="weixin.assets" >
+	                素材库
+	            </a>
+	        </li>
+	        <li ng-class="{active: $state.includes('weixin.reply')}" >
+	            <a href="" ui-sref="weixin.reply.onAttention" >
+	                自动回复
+	            </a>
+	        </li>
+	        <li ui-sref-active="active">
+	            <a href="" ui-sref="weixin.menu" >
+	                自定义菜单
+	            </a>
+	        </li>
+	    </ul>
+	</nav>
+</aside>
+<section class="main-content-wrapper">
+	<div id="weixin_unbind" class="panel" ng-if="!isBind">
+		<div class="panel-body">
+			<h3>绑定微信公众号，把店铺和微信打通</h3>
+			<p>绑定后即可在这里管理您的公众号，我们提供比微信官方后台更强大的功能！</p>
+			<a ui-sref="bind.step_one" class="btn btn-primary"><i class="fa fa-weixin"></i>我有公众号,立即绑定</a>
+			<a target="_blank" href="https://mp.weixin.qq.com/" class="btn  btn-default">没有,立即申请</a>
+		</div>
+	</div>
+	<div  ng-if="isBind" ui-view></div>
+</section>
+<!-- Footer -->
+<div ng-include="'views/layout/footer.html'"></div>

@@ -1,0 +1,17 @@
+[
+	{
+		"tplName":"空白模版",
+		"tplImage":"G01/M01/00/08/CgA8BFaAs_-AcBw7AAAPvGrK5kk843.jpg",
+		"tplData":[]
+	},
+	{
+		"tplName":"标准首页",
+		"tplImage":"G01/M02/00/08/CgA8BFaAtJSAGY9eAACIZt2Ezm4021.jpg",
+		"tplData":[{"type":"tpl-shop","shopName":"1","logo":"G01/M02/00/08/CgA8BFaAm_SAJ5dWAADWpH-DvQ4989.png","backgroundColor":"G01/M01/00/08/CgA8BFaAm5CAGHi8AAOSbUVQAKY598.png"},{"type":"tpl-title","title":"最新商品","subtitle":"","textAlign":"left","backgroundColor":"#ffffff"},{"type":"tpl-goods","displayNum":6,"displayList":"lastest","displayType":{"name":"normal_list","parmas":{"showTitle":true,"showDesc":true,"showPrice":true}}}]
+	},
+	{
+		"tplName":"轮播图首页",
+		"tplImage":"G01/M01/00/08/CgA8BFaAq7CAIB-5AAEatsfv8zE645.png",
+		"tplData":[{"type":"tpl-slider","items":[{"image":"G01/M00/00/08/CgA8BFaAnliAUfA3AARFWpxxrVI063.png","link":{"type":2,"url":""}},{"image":"G01/M01/00/08/CgA8BFaAnmWAan16AAN1P1G0ARA589.png","link":{"type":2,"url":""}}]},{"type":"tpl-title","title":"最热商品","subtitle":"","textAlign":"left","backgroundColor":"#ffffff"},{"type":"tpl-goods","displayNum":"6","displayList":"lastest","displayType":{"name":"big_list","parmas":{"showTitle":true,"showDesc":true,"showPrice":true}}}]
+	}
+]

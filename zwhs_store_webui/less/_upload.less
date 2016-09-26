@@ -1,0 +1,104 @@
+#uploadfile h3{
+    margin-bottom:10px;
+    padding-bottom:10px;
+    border-bottom:1px solid #ddd;
+}
+#uploadfile .nav{
+    padding-left:20px;
+}
+#uploadfile .nav li{
+    padding:10px 0px;
+}
+#uploadfile .nav li a{
+    border:none;
+    border-radius:0px;
+    background:transparent;
+    padding:0px 15px;
+    border-right:2px solid #999;
+}
+#uploadfile .nav li:last-child a{
+    border-right:none;
+}
+#uploadfile .nav li.active a{
+    font-weight:bold;
+    color:@primaryColor;
+}
+#uploadfile ul.files{
+    padding:0px;
+    margin:0px;
+    padding-top:10px;
+    list-style:none;
+    border:2px dashed #ddd;
+}
+#uploadfile .empty{
+    text-align:center;
+    font-size:18px;
+    line-height:100px;
+    font-weight:bold;
+    color:#ccc;
+    height:100px;
+    margin:0px;
+}
+#uploadfile .preview{
+    overflow:hidden;
+    display:block;
+}
+
+#uploadfile .preview #crop_preview{
+    max-width:none;
+}
+
+
+#uploadfile ul.myPhotos{
+    padding:0px;
+    margin:0px;
+    padding-top:10px;
+    list-style:none;
+}
+
+#uploadfile ul.myPhotos .empty{
+    text-align:center;
+    font-size:18px;
+    line-height:100px;
+    font-weight:bold;
+    color:#ccc;
+}
+
+#uploadfile ul.myPhotos li{
+    float:left;
+    margin-right:15px;
+    margin-bottom:15px;
+}
+#uploadfile ul.myPhotos li .photoWrapper{
+    position:relative;
+    height: 80px;
+    width: 80px;
+    background-size:100% auto;
+    background-position:center center;
+    background-repeat:no-repeat;
+    border:1px solid #ddd;
+    box-sizing:border-box;
+    cursor:pointer;
+}
+
+
+#uploadfile ul.myPhotos li .photoWrapper.selected{
+    border-color:@successColor;
+}
+#uploadfile .photoIcon{
+    background:@successColor;
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    color:#fff;
+    padding:3px;
+    font-size:11px;
+}
+
+#uploadfile .pagination{
+    margin:10px 30px;
+}
+
+#uploadfile ul.myPhotos li:nth-child(9n+1){
+    margin-left:30px;
+}

@@ -1,0 +1,30 @@
+<div id="page_level">
+    <div class="pageheader">
+        <h3>店铺等级</h3>
+    </div>
+    <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+       <table class="table-bordered table">
+           <thead>
+               <tr>
+                   <th>店铺等级</th>
+                   <th>分成比例(%)</th>
+               </tr>
+           </thead>
+           <tbody>
+               <tr ng-repeat="level in levels">
+                   <td>{{level.sgName}}</td>
+                   <td>{{level.commisRates}}</td>
+               </tr>
+               <tr>
+                 <td colspan="2">
+                   <button class="btn btn-info" data-ng-click="back()">
+                     返回
+                   </button>
+                 </td>
+               </tr>
+           </tbody>
+       </table>
+    </div>
+   </div>
+</div>

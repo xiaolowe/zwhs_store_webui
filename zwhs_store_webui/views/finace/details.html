@@ -1,0 +1,65 @@
+<div class="pageheader">
+    <h2>财务管理</h2>
+</div>
+<section id="main-content">
+    <div class="row" ng-controller="finaceDetails">
+        <div class="col-md-12 col-lg-12">
+            <!-- content -->
+            <div class="row">
+	            <div class="panel panel-default">
+	                <div class="panel-body">
+	                    <table class="table table-bordered table-striped">
+	                        <tbody>
+	                        	<tr>
+	                        		<th>支付编号：</th>
+	                        		<td>{{data.cashNo}}</td>
+	                        		<th>申请时间：</th>
+	                        		<td>{{data.applyTime | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+	                        	</tr>
+	                        	<tr>
+	                        		<th>状态：</th>
+	                        		<td>
+	                        			<span data-ng-if="data.confirmStat==0">未审核</span>
+	                        			<span data-ng-if="data.confirmStat==1">审核通过</span>
+	                        			<span data-ng-if="data.confirmStat==2">已打款</span>
+	                        			<span data-ng-if="data.confirmStat==3">已驳回</span>
+	                        		</td>
+	                        		<th>打款时间：</th>
+	                        		<td>
+	                        			<span>{{data.payingTime | date:"yyyy-MM-dd HH:mm:ss"}}</span>
+	                        		</td>
+	                        	</tr>
+	                        	<tr>
+	                        		<th>申请人：</th>
+	                        		<td>{{data.applyUserName}}</td>
+	                        		<th>申请单位：</th>
+	                        		<td>{{data.companyName}}</td>
+	                        	</tr>
+	                        	<tr>
+	                        		<th>银行卡号：</th>
+	                        		<td>{{data.bankAccNumber}}</td>
+	                        		<th>开户人：</th>
+	                        		<td>{{data.bankOwner}}</td>
+	                        	</tr>
+	                        	<tr>
+	                        		<th>开户行：</th>
+	                        		<td colspan="3">{{data.bankAccName}}</td>
+	                        	</tr>
+	                        	<tr>
+	                        		<th>提现金额：</th>
+	                        		<td>¥ {{data.applyMoney}}元</td>
+	                        		<td colspan="2">
+	                        			<button type="button" class="btn btn-default btn-sm" ng-click="open(data.payingCertificate)" data-ng-if="data.payingCertificate!=null">查看凭证</button>
+	                        			&nbsp;
+	                        			<button type="button" class="btn btn-info btn-sm" ng-click="back()">返回</button>
+	                        		</td>
+	                        	</tr>
+	                        </tbody>
+	                    </table>
+	            	</div>
+	            </div>
+            </div>
+            <!-- /content -->
+        </div>
+    </div>
+</section>

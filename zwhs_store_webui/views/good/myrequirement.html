@@ -1,0 +1,45 @@
+<div class="pageheader">
+    <h3>我提交的商品</h3>
+</div>
+<section id="main-content" style="padding-top:0">
+    <div class="row" ng-controller="myRequirementList">
+		<div class="col-sm-12 mt10">
+            <div class="form-group pull-right">
+                <button type="button" class="btn btn-primary btn-sm" data-ng-click="returnplatform()">返回平台商品库</button>
+            </div>
+            <table class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>商品编号</th>
+                    <th>品牌</th>
+                    <th>商品名称</th>
+                    <th>规格</th>
+                    <th>分类</th>
+                    <th>状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="rows.length==0">
+                        <td colspan="7" class="empty">没有查询到数据</td>
+                    </tr> 
+                  <tr ng-repeat="data in rows">
+                    <td>{{data.goodsId}}</td>
+                    <td>{{data.brandName}}</td>
+                    <td>{{data.goodsName}}</td>
+                    <td>{{data.goodsSpec}}</td>
+                    <td>{{data.gcName}}</td>
+                    <td>
+                    	<span data-ng-if="data.goodsVerify==0" style="color:red">待审核</span>
+                        <span data-ng-if="data.goodsVerify==1" style="color:green">审核通过</span>
+                        <span data-ng-if="data.goodsVerify==2" style="color:grey">审核未通过</span>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
+            <div>
+                <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="10" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></uib-pagination>
+            </div>
+
+        </div>
+    </div>
+</section>

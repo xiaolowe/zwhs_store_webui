@@ -1,0 +1,17 @@
+<div class="modal-content" id="templates">
+	<div class="modal-header">
+		<h4 class="modal-title">店铺首页模版</h4>
+	</div>
+	<div class="modal-body">
+		<ul class="clearfix">
+			<li class="item" ng-repeat="tpl in templates" ng-click="select(tpl)" ng-class="{'selected':selectTpl == tpl}">
+				<img ng-src="{{tpl.tplImage|asImage}}" />
+				<p>{{tpl.tplName}}</p>
+				<i ng-show="selectTpl == tpl" class="fa fa-check"></i>
+			</li>
+		</ul>
+	</div>
+	<div class="modal-footer center">
+		<button type="button" ng-click="save()" class="btn btn-primary">保存</button>
+	</div>
+</div>

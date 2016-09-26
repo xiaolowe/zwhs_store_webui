@@ -1,0 +1,77 @@
+<div class="panel panel-default">
+	<div class="panel-heading">商品列表配置</div>
+	<div class="panel-body">
+		<form class="form-horizontal" novalidate="">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">显示内容</label>
+				<div class="col-sm-6">
+					<select ng-model="$parent.selectedItem.displayList" class="form-control">
+						<option value="lastest">最新商品</option>
+						<option value="popular">最热商品</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">显示个数</label>
+				<div class="col-sm-6">
+					<label class="radio-inline">
+						<input type="radio" name="displayNum" value="6" ng-model="$parent.selectedItem.displayNum">6
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="displayNum" value="12" ng-model="$parent.selectedItem.displayNum">12
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="displayNum" value="18" ng-model="$parent.selectedItem.displayNum">18
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">显示方式</label>
+				<div class="col-sm-6">
+					<label class="radio-inline">
+						<input type="radio" name="textAlign" value="big_list" ng-model="$parent.selectedItem.displayType.name">大图
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="textAlign" value="normal_list" ng-model="$parent.selectedItem.displayType.name">小图
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">&nbsp;</label>
+				<div class="col-sm-6">
+					<div ng-switch on="$parent.selectedItem.displayType.name">
+						<div class="params" ng-switch-when="big_list">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="showTitle" ng-model="$parent.selectedItem.displayType.parmas.showTitle">是否显示标题
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="showDesc" ng-model="$parent.selectedItem.displayType.parmas.showDesc">是否显示描述
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="showPrice" ng-model="$parent.selectedItem.displayType.parmas.showPrice">是否显示价格
+								</label>
+							</div>
+						</div>
+						<div class="params" ng-switch-when="normal_list">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="showTitle" ng-model="$parent.selectedItem.displayType.parmas.showTitle">是否显示标题
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="showPrice" ng-model="$parent.selectedItem.displayType.parmas.showPrice">是否显示价格
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

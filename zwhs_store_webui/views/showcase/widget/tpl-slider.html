@@ -1,0 +1,56 @@
+<div class="tpl-slider">
+	<div class="image" ng-if="item.items.length > 0">
+    	<img ng-src="{{item.items[0].image|asImage:'160_640'}}">
+    	<ul class="cycles" ng-style="{left: 160 - 6*item.items.length}">
+    		<li ng-repeat="i in item.items"></li>
+    	</ul>
+    </div>
+    
+	<div class="e" ng-if="item.items.length == 0">
+		<h4>图片广告</h4>
+		<p>图片推荐宽度</p>
+	</div>
+</div>
+<style>
+	.tpl-slider{
+		position: relative;
+	}
+	.tpl-slider .image{
+		text-align: center;
+	}
+	.tpl-slider img{
+		height:160px;
+		width:auto;
+	}
+	.tpl-slider .e{
+		padding:20px 0px;
+		background: #2ecc71;
+		color: #fff;
+		text-align: center;
+	}
+	.tpl-slider .e h4{
+		font-size:18px;
+		color: #fff;
+	}
+	.tpl-slider .e p{
+		font-size:14px;
+		margin:5px 0px;
+	}
+	.tpl-slider .cycles{
+		left:10%;
+		position: absolute;
+		list-style: none;
+		padding:0px;
+		margin:0px auto;
+		bottom:10px;
+		text-align: center;
+	}
+	.tpl-slider .cycles li{
+		float:left;
+		width: 6px;
+		height:6px;
+		border-radius: 3px;
+		background: #fff;
+		margin-left:5px;
+	}
+</style>

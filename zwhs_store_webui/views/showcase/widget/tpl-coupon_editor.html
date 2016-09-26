@@ -1,0 +1,39 @@
+<div id="coupon_editor" class="panel panel-default">
+	<div class="panel-heading">页面配置</div>
+	<div class="panel-body">
+		<form class="form-horizontal" novalidate="">
+			<div class="form-group">
+				<label class="col-sm-3 control-label">优惠券</label>
+				<div class="col-sm-9">
+					<ul class="coupon_editor_list">
+						<li ng-repeat="coupon in $parent.selectedItem.coupons">
+							<span class="label label-success">{{coupon.couponName}}</span> <span class="condition">满{{coupon.couponCondition}}可领</span>
+							<i ng-click="deleteCoupon(coupon)" class="fa fa-times"></i>
+						</li>
+					</ul>
+					<button class="pull-right btn btn-primary btn-xs" add-coupon coupons="$parent.selectedItem.coupons">添加优惠券</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<style type="text/css">
+	#coupon_editor .coupon_editor_list{
+		padding:0px;
+		margin:0px;
+		list-style: none;
+		margin-bottom:5px;
+	}
+	#coupon_editor .coupon_editor_list li{
+		padding:5px 0px;
+		border-bottom:1px solid #ddd;
+	}
+	#coupon_editor .coupon_editor_list li .condition{
+		color:#bbb;
+	}
+	#coupon_editor .coupon_editor_list li .fa{
+		float:right;
+		color:#999;
+		margin-right:15px;
+	}
+</style>

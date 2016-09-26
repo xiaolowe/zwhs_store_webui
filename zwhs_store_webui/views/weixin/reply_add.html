@@ -1,0 +1,64 @@
+<div id="reply_add">
+    <div class="pageheader">
+        <h3 ng-if="!edit">关键字添加</h3>
+        <h3 ng-if="edit">关键字编辑</h3>
+    </div>
+    <section id="main-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">关键词：</label>
+                        <div class="col-sm-3">
+                            <input name="replyKeyword" class="form-control" ng-model="reply.replyKeyword" ng-disabled='edit' >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">回复内容：{{reply.replyConType}}</label>
+                        <div class="col-sm-10">
+                            <div class="radioes">
+                                <label class="radio-inline">
+                                    <input type="radio" ng-model="reply.replyConType" value="1">文本回复
+                                </label>
+                                 <label class="radio-inline">
+                                    <input type="radio" ng-model="reply.replyConType" value="2">图文回复
+                                </label>
+                            </div>
+                            <div class="content ptb10" ng-show="reply.replyConType=='1'">
+                                <textarea ng-model="reply.replyText" class="form-control p10" rows="6"></textarea>
+                            </div>
+                            <div class="content ptb10" ng-show="reply.replyConType=='2'">
+                                <div class="row">
+                                    <div class="col-sm-4 mt10" ng-repeat="a in reply.materialWarehouses">
+                                        <div class="assets_item">
+                                            <h3>
+                                                <a class="text" href="">{{a.articleTitle}}</a>
+                                            </h3>
+                                            <p class="time">
+                                                {{a.insDate | date:"shortTime"}}
+                                            </p>
+                                            <div class="img">
+                                                <img ng-src="{{a.coverPic | asImage:'300_300'}}">
+                                            </div>
+                                            <div class="opration clearfix">
+                                                <a href="" ng-click="delAsset(a)" ><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="col-sm-4 mt10">
+                                        <add-asset content-list="reply.materialWarehouses" class="add_asset">
+                                            <i class="fa fa-plus"></i>
+                                        </add-asset>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group center">
+                        <button ng-click="save()" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>

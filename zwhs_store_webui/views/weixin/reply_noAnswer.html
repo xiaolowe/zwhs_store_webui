@@ -1,0 +1,43 @@
+ <div class="row p10" id="reply_noAnswer">
+    <div class="col-sm-12">
+        <div class="radioes" >
+            <label class="radio-inline">
+                <input type="radio" ng-model="noAnswer.replyConType" name="noAnswer_type" value="1">文本回复
+            </label>
+             <label class="radio-inline">
+                <input type="radio" ng-model="noAnswer.replyConType" name="noAnswer_type" value="2">图文回复
+            </label>
+        </div>
+        <div class="content ptb10" ng-show="noAnswer.replyConType=='1'">
+            <textarea ng-model="noAnswer.replyText" class="form-control p10" rows="6"></textarea>
+        </div>
+        <div class="content ptb10" ng-show="noAnswer.replyConType=='2'">
+            <div class="row">
+                <div class="col-sm-4 mt10" ng-repeat="a in noAnswer.materialWarehouses">
+                    <div class="assets_item">
+                        <h3>
+                            <a class="text" href="">{{a.articleTitle}}</a>
+                        </h3>
+                        <p class="time">
+                            {{a.insDate | date:"shortTime"}}
+                        </p>
+                        <div class="img">
+                            <img ng-src="{{a.coverPic | asImage:'300_300'}}">
+                        </div>
+                        <div class="opration clearfix">
+                            <a href=""  ng-click="delAsset(a)"><i class="fa fa-trash"></i></a>
+                        </div>
+                    </div>  
+                </div>
+                <div class="col-sm-4 mt10">
+                    <add-asset content-list="noAnswer.materialWarehouses" class="add_asset">
+                        <i class="fa fa-plus"></i>
+                    </add-asset>
+                </div>
+            </div>
+        </div>
+         <div class="content">
+            <button ng-click="save()" class="btn btn-success">保存</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="modal-content">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title">修改Logo</h4>
+	</div>
+	<div class="modal-body">
+		<div data-file-upload ng-controller="common.logo.FileUploadController">
+			<span class="btn btn-default fileinput-button">
+	            <span>选择文件</span>
+	            <input id="fileupload" type="file" name="files[]" multiple >
+	        </span>
+			<div class="files ng-cloak">
+	            <li data-ng-repeat="file in queue">
+	                <span data-ng-switch="!!file.thumbnailUrl">
+	                    <div class="preview" ng-controller="common.logo.FileUploadPreview" data-ng-switch-default data-file-upload-preview="file"></div>
+	                </span>
+	            </li>
+	        </div>
+
+	    </div>
+	</div>
+	<div class="modal-footer center">
+		<button type="button" class="btn btn-primary">保存</button>
+	</div>
+</div>

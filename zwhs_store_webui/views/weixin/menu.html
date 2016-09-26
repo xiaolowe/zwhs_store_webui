@@ -1,0 +1,116 @@
+<div id="menu_edit">
+	<div class="pageheader">
+	    <h3>自定义菜单</h3>
+	</div>
+	<section id="main-content">
+		<div class="row">
+	        <div class="col-md-6">
+	        	<div class="phone-design">
+				    <div class="phone-header"></div>
+				    <div class="phone-entry">
+				    	<div class="tpl-config">
+							<h1>自定义菜单</h1>
+						</div>
+						<div class="menus">
+							<div class="item"  ng-repeat="menu in menus">
+								<a href="" ng-class="{'selected': selectedMenu == menu}" ng-click="select(menu)">
+									{{menu.title}}
+								</a>
+								<ul class="submenu" ng-show="menuIsShow(menu)">
+									<li class="subitem" ng-repeat="sub in menu.submenu">
+										<a href=""  ng-class="{'selected': selectedMenu == sub}" ng-click="select(sub)">{{sub.title}}</a>
+									</li>
+									<li class="subitem add" ng-show="menu.submenu.length!=5">
+										<a href="" ng-click="itemAdd(menu)"><i class="fa fa-plus"></i></a>
+									</li>
+									<div class="arrow"></div>
+								</ul>
+							</div>
+							<div class="add" ng-show="menus.length!=3">
+								<a href="" ng-click="add()"><i class="fa fa-plus"></i></a>
+							</div>
+						</div>
+				    </div>
+				    <div class="phone-footer">
+						
+				    </div>
+				</div>
+	        </div>
+	        <div class="col-md-6">
+	        	<div class="panel panel-default">
+	        		<div class="panel-heading">菜单属性<a href="" ng-if="selectedMenu"  class="pull-right" ng-click="delete()">删除菜单</a></div>
+	        		<div class="panel-body p10">
+	        			<div class="empty" ng-show="!selectedMenu">
+	        				没有选择对象
+	        			</div>
+
+	        			<form class="form-horizontal" ng-if="selectedMenu.submenu.length>0" role="form">
+				            <div class="form-group">
+				                <label class="col-sm-4 control-label">菜单名称</label>
+				                <div class="col-sm-6">
+				                    <input name="title" class="form-control" ng-model="selectedMenu.title"  >
+				                </div>
+				            </div>
+				            
+				        </form>
+
+				        <form class="form-horizontal" ng-if="selectedMenu &&(!selectedMenu.submenu || selectedMenu.submenu.length==0)" role="form">
+				            <div class="form-group">
+				                <label class="col-sm-4 control-label">菜单名称</label>
+				                <div class="col-sm-6">
+				                    <input name="title" class="form-control" ng-model="selectedMenu.title"  >
+				                </div>
+				            </div>
+				            <div class="form-group">
+				            	<div class="col-sm-12">
+				            		<div class="radioes" >
+		                                 <label class="radio-inline">
+		                                    <input type="radio" ng-model="selectedMenu.type" name="reply_type" value="image">图文回复
+		                                </label>
+		                                 <label class="radio-inline">
+		                                    <input type="radio" ng-model="selectedMenu.type" name="reply_type" value="link">跳转链接
+		                                </label>
+		                            </div>
+		                            <div class="content ptb10" ng-show="selectedMenu.type=='image'">
+		                                <div class="row">
+		                                    <div class="col-sm-4 mt10" ng-repeat="a in selectedMenu.assets">
+		                                        <div class="assets_item">
+		                                            <h3>
+		                                                <a class="text" href="">{{a.articleTitle}}</a>
+		                                            </h3>
+		                                            <p class="time">
+		                                                {{a.insDate | date:"shortTime"}}
+		                                            </p>
+		                                            <div class="img">
+		                                                <img ng-src="{{a.coverPic | asImage:'150_300'}}">
+		                                            </div>
+		                                            <div class="opration clearfix">
+		                                                <a href="" ng-click="delAsset(a)"><i class="fa fa-trash"></i></a>
+		                                            </div>
+		                                        </div>  
+		                                    </div>
+		                                    <div class="col-sm-4 mt10">
+		                                        <add-asset content-list="selectedMenu.assets" class="add_asset">
+		                                            <i class="fa fa-plus"></i>
+		                                        </add-asset>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="content ptb10" ng-show="selectedMenu.type=='link'">
+		                            	<div class="links" links link="selectedMenu.link"></div>
+		                            </div>
+				            	</div>
+				            </div>
+				        </form>
+	        			
+	        		</div>
+	        	</div>
+
+	        	
+	        </div>
+	        <div class="col-md-12 center bottom">
+	        	<button class="btn btn-success" ng-click="save()">保存</button>
+	        </div>
+	    </div>
+	</section>
+</div>

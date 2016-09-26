@@ -1,0 +1,47 @@
+ <div class="row p10 mt10">
+    <div class="col-sm-4">
+        <div class="input-group">
+          <input type="text" class="form-control" ng-model="searchValue" placeholder="关键词">
+          <span class="input-group-btn">
+            <button class="btn btn-default" ng-click="pageChanged()">
+                <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+    </div>
+    <div class="col-sm-8">
+        <a ui-sref="weixin.reply_add" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>添加一个关键词</a>
+    </div>
+    <div class="col-sm-12 mt10">
+        <table class="table table-bordered">
+            <tr>
+                <th>关键词</th>
+                <th>回复内容</th>
+                <th class="center" width="120">创建时间</th>
+                <th class="center" width="120">操作</th>
+            </tr>
+            <tr ng-repeat="reply in replies">
+                <td>{{reply.replyKeyword}}</td>
+                <td>
+                    <p ng-if="reply.replyConType == '1'">
+                        {{reply.replyText}}
+                    </p>
+                    <p ng-if="reply.replyConType == 2" ng-repeat="c in reply.materialWarehouses">
+                        {{c.articleTitle}}
+                    </p>
+                </td>
+                <td class="center">{{reply.insDate|date}}</td>
+                <td class="center">
+                    <a href="" ui-sref="weixin.reply_edit({id:reply.keyId})">编辑</a>
+                    <a href="" ng-click="delete(reply)">删除</a>
+                </td>
+            </tr>
+            <tr ng-if="replies.length == 0">
+                <td colspan="4" class="empty">暂无关键词</td>
+            </tr>
+        </table>
+    </div>
+    <div class="cols-sm-12">
+        <uib-pagination class="pull-right" total-items="repliesData.totalElements" ng-model="currentPage" ng-change="pageChanged()" items-per-page="pageSize" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></uib-pagination>
+    </div>
+</div>

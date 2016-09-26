@@ -1,0 +1,147 @@
+<div class="tpl-good">
+	<div ng-switch on="item.displayType.name">
+		<ul class="big_list clearfix list" ng-switch-when="big_list">
+			<li>
+				<div class="cover big first">
+					第一个商品
+				</div>
+				<h6 ng-show="item.displayType.parmas.showTitle">此处显示商品名称</h6>
+				<p ng-show="item.displayType.parmas.showDesc" class="desc">此处显示商品描述</p>
+				<p ng-show="item.displayType.parmas.showPrice" class="price">￥99.9</p>
+				<div class="cart"><i class="fa fa-plus-circle"></i></div>
+			</li>
+			<li>
+				<div class="cover big second">
+					第二个商品
+				</div>
+				<h6 ng-show="item.displayType.parmas.showTitle">此处显示商品名称</h6>
+				<p ng-show="item.displayType.parmas.showDesc" class="desc">此处显示商品描述</p>
+				<p ng-show="item.displayType.parmas.showPrice" class="price">￥999.8</p>
+				<div class="cart"><i class="fa fa-plus-circle"></i></div>
+			</li>
+			<li>
+				<div class="cover big third">
+					第三个商品
+				</div>
+				<h6 ng-show="item.displayType.parmas.showTitle">此处显示商品名称</h6>
+				<p ng-show="item.displayType.parmas.showDesc" class="desc">此处显示商品描述</p>
+				<p ng-show="item.displayType.parmas.showPrice" class="price">￥58.8</p>
+				<div class="cart"><i class="fa fa-plus-circle"></i></div>
+			</li>
+		</ul>
+		<ul class="normal_list clearfix list" ng-switch-when="normal_list">
+			<li>
+				<div class="cover first">
+					第一个商品
+				</div>
+				<h6 ng-show="item.displayType.parmas.showTitle">此处显示商品名称</h6>
+				<p ng-show="item.displayType.parmas.showPrice" class="price">￥99.9</p>
+				<div class="cart"><i class="fa fa-plus-circle"></i></div>
+			</li>
+			<li>
+				<div class="cover second">
+					第二个商品
+				</div>
+				<h6 ng-show="item.displayType.parmas.showTitle">此处显示商品名称</h6>
+				<p ng-show="item.displayType.parmas.showPrice" class="price">￥999.8</p>
+				<div class="cart"><i class="fa fa-plus-circle"></i></div>
+			</li>
+			<li>
+				<div class="cover third">
+					第三个商品
+				</div>
+				<h6 ng-show="item.displayType.parmas.showTitle">此处显示商品名称</h6>
+				<p ng-show="item.displayType.parmas.showPrice" class="price">￥58.8</p>
+				<div class="cart"><i class="fa fa-plus-circle"></i></div>
+			</li>
+			<li>
+				<div class="cover n">
+					第N个商品
+				</div>
+				<h6 ng-show="item.displayType.parmas.showTitle">此处显示商品名称</h6>
+				<p ng-show="item.displayType.parmas.showPrice" class="price">￥0.8</p>
+				<div class="cart"><i class="fa fa-plus-circle"></i></div>
+			</li>
+		</ul>
+	</div>
+</div>
+<style type="text/css">
+	ul.list{
+		list-style: none;
+		margin: 0px;
+		padding:10px 5px;
+	}
+	ul.list li{
+		position: relative;
+		margin-bottom: 5px;
+		padding:5px;
+		background: #fff;
+		border:1px solid #ddd;
+	}
+	ul.list li:last-child{
+		margin-bottom: 0px;
+	}
+	ul.list .cover{
+		color:#fff;
+		height:137px;
+		width:137px;
+		margin: 0px auto;
+		line-height: 140px;
+		text-align: center;
+		font-size: 18px;
+	}
+	ul.list .cover.big{
+		height:290px;
+		width: 290px;
+		margin: 0px auto;
+		line-height: 290px;
+		text-align: center;
+		font-size: 25px;
+	}
+	ul.list .cart i{
+		color:#27ae60;
+		display: block;
+		font-size:18px;
+	}
+	ul.list .cover.first{
+		background-color: #f39c12;
+	}
+	ul.list .cover.second{
+		background-color: #d35400;
+	}
+	ul.list .cover.third{
+		background-color: #c0392b;
+	}
+	ul.list .cover.n{
+		background-color: #8e44ad;
+	}
+	ul.list .cart{
+		position: absolute;
+		right:10px;
+		bottom:5px;
+	}
+	ul.list li h6{
+		font-size: 14px;
+		font-weight: bold;
+		color: #333;
+		margin: 10px 3px;
+	}
+	ul.big_list li p.desc{
+		color:#999;
+		font-size: 12px;
+		margin:3px;
+	}
+	ul.list li p.price{
+		color:#e74c3c;
+		font-weight: bold;
+		font-size: 14px;
+		margin:0px;
+	}
+
+	ul.normal_list li{
+		float:left;
+	}
+	ul.normal_list li:nth-child(2n){
+		margin-left:5px;
+	}
+</style>

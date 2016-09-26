@@ -1,0 +1,163 @@
+<div class="pageheader">
+    <h2>商品详情</h2>
+</div>
+<section id="main-content">
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body" ng-controller="planformDetails">
+                    <div class="table-responsive">
+                        <form novalidate class="form-group" name="ngform">
+                          <table class="table table-bordered table-striped">
+                            <tbody>
+                              <tr>
+                                <td><b>商品名称：</b></td>
+                                <td colspan="3">{{data.goodsName}}</td>
+                              </tr>
+                              <tr>
+                                <td><b>商品售价</b></td>
+                                <td>
+                                  <div class="input-group">
+                                    <div class="input-group-addon">¥</div>
+                                    <input type="number" class="form-control col-sm-2" data-ng-model="data.goodsSellprice" name="goodsSellprice" min="0" max="9999999" required />
+                                  </div>
+                                  <div ng-messages="!ngform.goodsSellprice.$pristine && ngform.goodsSellprice.$error">
+                                    <div ng-message="required">商品售价必填</div>
+                                    <div ng-message="number">商品售价必需为数字</div>
+                                    <div ng-message="min">商品售价必需为正数</div>
+                                    <div ng-message="max">商品售价不合理</div>
+                                  </div>
+                                </td>
+                                <td><b>商品推荐</b></td>
+                                <td>
+                                  <input type="radio" name="t[]" value="1" data-ng-model="data.isRecommend">是
+                                  &nbsp;
+                                  <input type="radio" name="t[]" value="0" data-ng-model="data.isRecommend">否
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><b>上架数量：</b></td>
+                                <td class="col-sm-4">
+                                  <input type="number" class="form-control" data-ng-model="data.stockNumber" name="stockNumber" required min="0" maxlength="5" />
+                                  <div ng-messages="!ngform.stockNumber.$pristine && ngform.stockNumber.$error">
+                                    <div ng-message="required">上架数量必填</div>
+                                    <div ng-message="number">上架数量必需为数字</div>
+                                    <div ng-message="min">上架数量不能为负数</div>
+                                    <div ng-message="maxlength">上架数量不能超过99999件</div>
+                                  </div>
+                                </td>
+                                <td><b>自动下架时间：</b></td>
+                                <td><input type="text"  date-picker format="'yyyy-mm-dd hh:ii:ss'" minview="'0'" class="form-control" data-ng-model='data.offlineTime' readonly="readonly" style="cursor:pointer"></td>
+                              </tr>
+                              <tr>
+                                <td><b>剩余库存：</b></td>
+                                <td>{{data.stockNumber}}</td>
+                                <td><b>已售出：</b></td>
+                                <td>{{data.sellNumber}}</td>
+                              </tr>
+                              <tr>
+                                <td><b>商品编号：</b></td>
+                                <td>{{data.goodsId}}</td>
+                                <td><b>品牌名称：</b></td>
+                                <td>{{data.brandName}}</td>
+                              </tr>
+                              <tr>
+                                <td><b>分类：</b></td>
+                                <td>
+                                  <span ng-if="data.gcNo==item.gcNo" data-ng-repeat="item in classify">{{item.gcName}}</span>
+                                </td>
+                                <td><b>子分类：</b></td>
+                                <td>
+                                  <span ng-if="data.gcLitId==item.gcNo" data-ng-repeat="item in childclassify">{{item.gcName}}</span>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td><b>商品编码：</b></td>
+                                <td>{{data.goodsSn}}</td>
+                                <td><b>规格：</b></td>
+                                <td>{{data.goodsSpec}}</td>
+                              </tr>
+                              <tr>
+                                <td><b>是否加入分销：</b></td>
+                                <td>
+                            	 <input type="radio" name="f[]" value="1" data-ng-model="data.isAddRetail" >是
+                                  &nbsp;
+                                  <input type="radio" name="f[]" value="0" data-ng-model="data.isAddRetail">否
+                                </td>
+                                <td ng-show="data.isAddRetail==1"><b>母婴店收益：</b></td>
+                                <td ng-show="data.isAddRetail==1" style="max-width: 300px;">  
+                                	<div class="input-group">
+	                                	<div class="input-group-addon">¥</div>
+	                                	<input class="form-control input100" type="number" data-ng-model="data.storeAmount"  />
+                                	</div>
+                                </td>
+                              </tr>
+                              <tr ng-show="data.isAddRetail==1">
+                                <td><b>分销进货价：</b></td>
+                                <td>
+                                	<div class="input-group">
+	                                	<div class="input-group-addon">¥</div>
+	                                	<input class="form-control input100" type="number" data-ng-model="data.retailInitPrice" />
+                                	</div>
+                                </td>
+                                <td><b>分销售价范围：</b></td>
+                                <td style="max-width: 300px;">
+                                	<div class="input-group" style="max-width: 130px;     display: inline-table;">
+	                                	<div class="input-group-addon">¥</div>
+	                                	<input class="form-control input40" type="number" data-ng-model="data.retailPriceLow"/>
+                                	</div>
+                                	<div class="input-group"  style="max-width: 130px; display: inline-table; ">
+	                                	<div class="input-group-addon">¥</div> 
+	                                	<input class="form-control input40" type="number" data-ng-model="data.retailPriceHigh" />
+                                	</div>
+                                </td>
+                              </tr>
+                              <tr ng-show="data.isAddRetail==1">
+                                <td><b>分销售价：</b></td>
+                                <td><div class="input-group">
+	                                	<div class="input-group-addon">¥</div>
+	                                	<input class="form-control input100" type="number"  data-ng-model="data.retailSalePrice"  />
+                                	</div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                    <b>产品介绍：</b><br />
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="4">
+                                  <form class="form-horizontal" novalidate="">
+                                    <div class="ueditor" name="content" config=" {toolbars:[
+                                        ['bold', 'italic', 'underline', 'strikethrough', 'forecolor', 'backcolor', 'justifyleft', 'justifycenter', 'justifyright', '|', 'insertunorderedlist', 'insertorderedlist', 'blockquote', 'emotion', 'uploadimage', 'link', 'removeformat', '|', 'rowspacingtop', 'rowspacingbottom', 'lineheight', 'paragraph', 'fontsize', 'fullscreen'],
+                                        ['inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols']
+                                      ],
+                                          autoClearinitialContent:true,
+                                          wordCount:false,
+                                          elementPathEnabled:false,
+                                          initialFrameWidth:null,
+                                          initialFrameHeight:300,
+                                    }" ng-model="data.goodsBody" required></div>
+                                  </form>
+                                </td>
+                              </tr>
+                              <tr>
+                                  <td colspan="4" style="text-align:right">
+                                    <button type="button" class="btn btn-danger" data-ng-click="back()">返回</button>
+                                    &nbsp;&nbsp;
+                                    <button type="button" class="btn btn-primary" data-ng-click="changeStatus()">
+                                        直接上架
+                                    </button>
+                                    &nbsp;&nbsp;
+                                    <button type="button" class="btn btn-success" data-ng-click="submit()">保存到我的商品库</button>
+                                  </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

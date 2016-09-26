@@ -1,0 +1,90 @@
+<div id="assets_add">
+	<div class="pageheader">
+	    <h3>素材添加</h3>
+	</div>
+	<section id="main-content">
+		<div class="row">
+	        <div class="col-md-6">
+	        	<div class="phone-design">
+				    <div class="phone-header"></div>
+				    <div class="phone-entry">
+						<div class="tpl-config">
+							<h1>{{asset.articleTitle}}</h1>
+						</div>
+						<div class="assets_preview">
+							<h3>{{asset.articleTitle}}</h3>
+							<p>{{asset.insDate|date:"shortTime"}}<span>{{asset.author}}</p>
+							<div class="content" ng-bind-html="trustAsHtml(asset.articleComments)"></div>
+						</div>
+				    </div>
+				    <div class="phone-footer">
+						
+				    </div>
+				</div>
+	        </div>
+	        <div class="col-md-6">
+	        	<form class="form-horizontal" role="form"  name="ngform" novalidate>
+		            <div class="form-group">
+		                <label class="col-sm-2 control-label">标题：</label>
+		                <div class="col-sm-10">
+		                    <input name="articleTitle" class="form-control" required ng-model="asset.articleTitle"  >
+		                    <div ng-messages="!ngform.articleTitle.$pristine && ngform.articleTitle.$error">
+		                        <div ng-message="required">标题不能为空</div>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <label class="col-sm-2 control-label">作者：</label>
+		                <div class="col-sm-10">
+		                    <input name="articleAuthor" class="form-control" required ng-model="asset.articleAuthor" >
+		                    <div ng-messages="!ngform.articleAuthor.$pristine && ngform.articleAuthor.$error">
+		                        <div ng-message="required">作者不能为空</div>
+		                    </div>
+		                </div>
+		            </div>
+		             <div class="form-group">
+		                <label class="col-sm-2 control-label">描述：</label>
+		                <div class="col-sm-10">
+		                    <textarea rows=6 name="materialDesc" class="form-control" required ng-model="asset.materialDesc"></textarea>
+		                    <div ng-messages="!ngform.materialDesc.$pristine && ngform.materialDesc.$error">
+		                        <div ng-message="required">描述为空</div>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <label class="col-sm-2 control-label">封面：</label>
+		                <div class="col-sm-6">
+		                    <img ng-src="{{asset.coverPic|asImage:'450_250'}}" />
+		                    <input type="hidden" required ng-model="asset.coverPic" required/>
+		                </div>
+		                <div class="col-sm-4 center">
+							<a ratio="450_250" upload-file href="" link="asset.coverPic">修改封面</a>
+		                    <input type="hidden" name="coverPic" required ng-model="asset.coverPic" required/>
+							<div ng-messages="!ngform.coverPic.$pristine && ngform.coverPic.$error">
+		                        <div ng-message="required">封面不能为空</div>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="form-group">
+		                <div class="col-sm-12">
+							<div class="ueditor" name="articleComments" config=" {toolbars:[
+												['bold', 'italic', 'underline', 'strikethrough', 'forecolor', 'backcolor', 'justifyleft', 'justifycenter', 'justifyright', '|', 'insertunorderedlist', 'insertorderedlist', 'blockquote'],
+												['emotion', 'uploadimage', 'link', 'removeformat', '|', 'rowspacingtop', 'rowspacingbottom', 'lineheight', 'paragraph', 'fontsize'],
+												['inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols']
+											],
+							            autoClearinitialContent:true,
+							            wordCount:false,
+							            elementPathEnabled:false,
+							            initialFrameWidth:null,
+							            initialFrameHeight:300,
+							      }" ng-model="asset.articleComments" required></div>
+		                </div>
+		            </div>
+		        </form>
+	        </div>
+	        <div class="col-md-12 center bottom">
+	        	<button class="btn btn-success" ng-click="save()"  ng-disabled="ngform.$invalid">保存</button>
+	        </div>
+	    </div>
+	</section>
+</div>

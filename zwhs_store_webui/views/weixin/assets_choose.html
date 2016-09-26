@@ -1,0 +1,28 @@
+<div id="assets_choose">
+<div class="modal-header">
+	<a href="" ng-click="chooseAssets('my')" ng-class="{'selected':type=='my'}">我的素材</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" ng-click="chooseAssets('system')" ng-class="{'selected':type=='system'}" >系统素材</a>
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="col-sm-4" ng-repeat="a in assetsList">
+            <div class="assets_item" ng-class="{'selected':selectAsset == a}" ng-click="select(a)">
+                <h3>
+                    <a class="text" href="">{{a.articleTitle}}</a>
+                </h3>
+                <p class="time">
+                    {{a.insDate | date:"shortTime"}}
+                </p>
+                <div class="img">
+                    <img ng-src="{{a.coverPic | asImage:'300_300'}}">
+                </div>
+            </div>  
+        </div>
+	</div>
+	<div ng-if="assetsList.length == 0" class="empty">
+		没有选择素材
+	</div>
+</div>
+<div class="modal-footer center">
+	<button type="button" class="btn btn-primary" ng-click="choseThis()">选择这个素材</button>
+</div>
+</div>

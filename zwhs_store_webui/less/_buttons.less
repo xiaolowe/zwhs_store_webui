@@ -1,0 +1,107 @@
+.btn {
+    font-size: 12px;
+    font-weight: normal;
+    padding: 9px 20px;
+    margin:0px;
+    margin-bottom:5px;
+    border-radius:0px;
+}
+
+.btn i{
+   padding: 0 5px;
+}
+
+.btn-primary, a.btn-primary:link, a.btn-primary:visited {
+    color: #fff;
+    background-color: @primaryColor;
+}
+
+a.btn-primary:hover, a.btn-primary:active {
+    color: #ffffff;
+    background-color: @primaryColorHover;
+    border-color: @primaryColorHover;
+}
+
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary.active, 
+.open .dropdown-toggle.btn-primary {
+    color: #ffffff;
+    background-color: @primaryColorHover;
+    border-color: @primaryColorHover;
+}
+
+.btn-primary:active, 
+.btn-primary.active, 
+.open .dropdown-toggle.btn-primary {
+    background: @primaryColor;
+    border-color: @primaryColor;
+}
+
+
+.btn-default, a.btn-default:link, a.btn-default:visited {
+  border-color:@primaryColor;
+  background-color:#fff;
+  color:@primaryColor;
+}
+
+a.btn-default:hover, a.btn-default:active {
+  border-color:@primaryColor;
+  background-color:darken(#fff,5%);
+}
+
+.btn-primary.disabled, 
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary, 
+.btn-primary.disabled:hover, 
+.btn-primary[disabled]:hover, 
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus, 
+.btn-primary[disabled]:focus, 
+fieldset[disabled] .btn-primary:focus,
+ .btn-primary.disabled:active, 
+ .btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+ .btn-primary.disabled.active,
+  .btn-primary[disabled].active, 
+fieldset[disabled] .btn-primary.active {
+    background-color: @primaryColor;
+    border-color: @primaryColor;
+}
+
+
+
+/* Button Sizes */
+ .btn-lg {
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+}
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+.btn-xs {
+    padding: 1px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px;
+  direction: ltr;
+  cursor: pointer;
+}

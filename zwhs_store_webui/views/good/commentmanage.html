@@ -1,0 +1,78 @@
+<div class="pageheader">
+    <h3>商品评论</h3>
+</div>
+<section id="main-content">
+    <div class="row" data-ng-controller="commentManage">
+        <div class="col-sm-12">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>商品编号：</th>
+                                <td>{{goodsdata.goodsId}}</td>
+                                <th>商品品牌：</th>
+                                <td>{{goodsdata.brandName}}</td>
+                            </tr>
+                            <tr>
+                                <th>商品名称：</th>
+                                <td>{{goodsdata.goodsName}}</td>
+                                <th>商品编码：</th>
+                                <td>{{goodsdata.goodsSn}}</td>
+                            </tr>
+                            <tr>
+                                <th>分类：</th>
+                                <td>{{goodsdata.gcName}}</td>
+                                <th>子分类：</th>
+                                <td>{{goodsdata.gcLitName}}</td>
+                            </tr>
+                            <tr>
+                                <th>规格：</th>
+                                <td colspan="3">{{goodsdata.goodsSpec}}</td>
+                            </tr>
+                            <tr>
+                                <th>平均评分：</th>
+                                <td>{{avgscores}} 分</td>
+                                <th>评论条数：</th>
+                                <td>{{commentcount}} 条</td>
+                            </tr>
+<!--                            <tr>
+                                <th>评论展示方式：</th>
+                                <td>
+                                    <select class="form-control">
+                                        <option>今日</option>
+                                        <option>昨日</option>
+                                        <option>七日内</option>
+                                        <option>所有</option>
+                                    </select>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+-->
+                            <tr>
+                                <td colspan="4">
+                                    <table class="table table-bordered table-striped" data-ng-repeat="comment in comments">
+                                        <tr>
+                                            <td><b>评论者：</b>{{comment.memberTruename}}</td>
+                                            <td><b>评分：</b>{{comment.gevalScores}} 分</td>
+                                            <td width="100" class="center">
+                                                 <a href="" data-ng-click="hideComment(comment.gevalId,comment.gevalState)" data-ng-if="comment.gevalState==0" style="color:red">屏蔽该评论</a>
+                                                <a href="" data-ng-click="hideComment(comment.gevalId,comment.gevalState)" data-ng-if="comment.gevalState==1" style="color:blue">开放该评论</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                {{comment.gevalContent}}
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="text-align:right">
+                                    <button class="btn btn-default btn-sm" data-ng-click="back()">返回</button>    
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+        </div>
+    </div>
+</section>

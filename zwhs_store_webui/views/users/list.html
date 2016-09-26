@@ -1,0 +1,51 @@
+<div class="pageheader">
+    <h3>会员管理</h3>
+</div>
+<section id="main-content">
+    <div class="row" ng-controller="userList">
+   		<div class="col-sm-12">
+            <div class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入会员昵称" data-ng-model="searchvalue">
+				</div>
+				<div class="form-group pull-right">
+				    <button type="button" class="btn btn-primary" data-ng-click="search()">搜索</button>
+                </div>
+			</div>
+        </div> 
+        <div class="col-sm-12 mt10">
+			<table class="table table-bordered table-striped">
+				<tr>
+					<th width="80">会员</th>
+					<th>微信昵称</th>
+					<th>所在省份</th>
+					<th>所在城市</th>
+					<th>最后登录时间</th>
+					<th>会员创建时间</th>
+					<th>状态</th>
+					<th>操作</th>
+				</tr>
+                <tr ng-if="rows.length==0">
+                    <td colspan="8" class="empty">没有查询到数据</td>
+                </tr>
+				<tr data-ng-repeat="item in rows">
+					<td>
+						<img class="avatar_image" ng-src="{{item.memberAvatar}}">
+					</td>
+					<td>{{item.wechatAliasname}}</td>
+					<td>{{item.regionProvName}}</td>
+					<td>{{item.regionCityName}}</td>
+					<td>{{item.memberLoginTime | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+					<td>{{item.insDate | date:"yyyy-MM-dd HH:mm:ss"}}</td>
+					<td>
+						<span data-ng-if="item.memberState==1">正常</span>
+						<span data-ng-if="item.memberState==0" style="color:red">禁用</span>
+					</td>
+	
+					<td><a href="" ng-click="open(item.memberId)">查看详情</a></td>
+				</tr>
+			</table>
+			<uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="10" max-size="5" template-url="views/page/pagination.html" boundary-links="true"></uib-pagination>
+		</div>
+    </div>
+</section>

@@ -1,0 +1,46 @@
+<div class="pageheader">
+    <h4>商品管理</h4>
+</div>
+<section id="main-content">
+    <div class="row">
+        <div class="col-xs-4">
+        	<form class="form form-inline">
+	        	<div class="form-group">
+	        		<input class="form-control" />
+	        	</div>
+					<button type="button" class="btn btn-default">搜索</button>
+        	</form>
+        </div>
+        <div class="col-xs-8">
+        	<button class="pull-right btn btn-primary ">添加商品</button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12 col-lg-12">
+            <table ng-controller="crud.listCtrl" class="table ">
+				<tr>
+					<th>编号</th>
+					<th>名称</th>
+					<th>描述</th>
+					<th>类型</th>
+					<th>价格</th>
+					<th>操作</th>
+				</tr>
+				<tr ng-repeat="product in products">
+					<td>{{product.id}}</td>
+					<td>{{product.name}}</td>
+					<td>{{product.description}}</td>
+					<td>{{product.category}}</td>
+					<td>{{product.price}}</td>
+					<td class="center">
+						<a class="op" href="" ng-click="edit(product)">编辑</a>
+						<a class="op" href="" ng-click="delete(product)">删除</a>
+					</td>
+				</tr>
+			</table>
+
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-sm-9 col-md-offset-1">
+        <form class="form-horizontal" role="form" name="ngform" novalidate>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">公众号名称：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  name="wechatEntName" required ng-model="wxInfo.wechatEntName">
+                    <div ng-messages="!ngform.wechatEntName.$pristine && ngform.wechatEntName.$error">
+                        <div ng-message="required">公众号不能为空</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">公众号原始ID：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control"  name="wecharEntId" required  ng-model="wxInfo.wecharEntId"  >
+                     <div ng-messages="!ngform.wecharEntId.$pristine && ngform.wecharEntId.$error">
+                        <div ng-message="required">公众号原始ID不能为空</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">微信号：</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="wechatId" required   ng-model="wxInfo.wechatId" >
+                    <div ng-messages="!ngform.wechatId.$pristine && ngform.wechatId.$error">
+                        <div ng-message="required">微信号不能为空</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">AppID：</label>
+                <div class="col-sm-10">
+                     <input type="appid" class="form-control" ng-model="wxInfo.appId" name="appId" required  >
+                        <div ng-messages="!ngform.appId.$pristine && ngform.appId.$error">
+                            <div ng-message="required">AppID不能为空</div>
+                        </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">AppSecret：</label>
+                <div class="col-sm-10">
+                    <input type="appsecret" class="form-control"  ng-model="wxInfo.appSecret" required  >
+                    <div ng-messages="!ngform.appSecret.$pristine && ngform.appSecret.$error">
+                        <div ng-message="required">AppSecret不能为空</div>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="form-group">
+                <div class="pull-right">
+                    <button type="submit" ng-click="save()" class="btn btn-primary"  ng-disabled="ngform.$invalid">下一步</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

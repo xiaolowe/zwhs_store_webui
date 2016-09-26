@@ -1,0 +1,190 @@
+@charset "utf-8";
+/*
+ *
+ *   NEUBOARD - Responsive Admin Theme
+ *   Copyright 2014 Authentic Goods Co. http://authenticgoods.co
+ *
+*/
+*{
+  font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
+  font-size:@12px;
+}
+
+
+.n{
+	font-style:italic;
+	font-family:arial,sans-serif;
+	color:@primaryColor;
+}
+.p10{
+	padding:15px !important;
+}
+.ptb10{
+	padding:15px 0px;
+}
+.ml10{
+	margin-left:10px;
+}
+.mt10{
+	margin-top:15px;
+}
+#page_index .shop_title{
+	position:relative;
+	padding: 20px 15px 0px 40px;
+}
+#page_index .shop_title h3{
+	padding:10px 0px;;
+	font-weight:bold;
+
+}
+#page_index .shop_title h3 .badge{
+	vertical-align:baseline;
+	margin-left:10px;
+}
+#page_index .shop_title h3 a{
+	vertical-align:bottom;
+	font-weight:normal;
+	margin-left:10px;
+}
+#page_index .shop_title p{
+	color:#999;
+}
+#page_index .shop_title img{
+	float:left;
+	height:60px;
+	margin-right:20px;
+}
+#page_index .shop_title .btn-group{
+	position:absolute;
+	right:15px;
+	bottom:0px;
+}
+#page_index .charts .panel-body{
+	padding:0px;
+}
+
+.avatar_image{
+	width:60px;
+	height:60px;
+}
+
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{
+	border:0px;
+	border-bottom:2px solid @primaryColor;
+}
+.nav-tabs>li>a:hover, .nav-tabs>li>a:focus{
+	background:#fff;
+	border-color:#fff;
+	border-bottom-color:#ddd;
+}
+
+.empty{
+	height:400px;
+	line-height:400px;
+	text-align:center;
+	font-size:15px;
+	background:#f4f4f4;
+	text-shadow:0px 1px 1px #eee;
+	box-shadow:inset 0 1px 1px rgba(0,0,0,.05);
+	vertical-align:middle!important;
+}
+
+#identification .pageheader{
+	padding-left:0px;
+}
+.ng-active .ng-scope{
+	color:red
+}
+
+.login-wrapper{
+    background-image:url("../img/login-wrapper.jpg");
+    background-color:#fff;
+    background-position:center center;
+    background-size:100% auto;
+    background-repeat:no-repeat;
+    position:absolute;
+    left:50%;
+    margin-left:-1000px;
+    top:0px;
+    height:100%;
+    width:2000px;
+
+}
+
+.login{
+    width:330px;
+    background:#fff;
+    position:absolute;
+    padding:20px 30px;
+    left:50%;
+    top:50%;
+    margin-top:-145px;
+    margin-left:165px;
+}
+
+.login h3.title{
+	font-size:20px;
+	margin-bottom:30px;
+}
+#templates ul{
+	padding:0px;
+}
+#templates .item{
+	list-style:none;
+	float:left;
+	margin:0px 18px;
+	cursor:pointer;
+	border:1px solid transparent;
+	position:relative;
+}
+#templates .item i{
+	position:absolute;
+	right:0px;
+	bottom:0px;
+	padding:2px 1px 2px 3px;
+	background:@primaryColor;
+	color:#fff;
+}
+#templates .item.selected{
+	border-color:@primaryColor;
+}
+#templates .item p{
+ 	padding:9px;
+ 	background:#f8f8f8;
+ 	margin:0px;
+}
+#templates .item img{
+	height:200px;
+	width:auto;
+}
+
+// Variables, Mixins
+@import "../less/_variables.less";
+@import "../less/_pace.less";
+@import "../less/_mixins.less";
+@import "../less/_pages.less";
+@import "../less/_base.less";
+@import "../less/_header.less";
+@import "../less/_left-sidebar.less";
+@import "../less/_main-content.less";
+@import "../less/_tables.less";
+@import "../less/_buttons.less";
+@import "../less/_forms.less";
+
+
+@import "../less/_widgets.less";
+@import "../less/_panels.less";
+@import "../less/_badge.less";
+@import "../less/_misc.less";
+@import "../less/_charts.less";
+@import "../less/_icons.less";
+@import "../less/_calendar.less";
+@import "../less/_modals.less";
+
+@import "../less/_phone.less";
+
+@import "../less/_upload.less";
+
+@import "../less/_weixin.less";
+@import "../less/_tradeincard.less";
